@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Who pays Vietnam's tax bill — VNTAX 200 and STATE 100</title>
 <meta name="description" content="An interactive breakdown of Vietnam's largest contributors to the state budget, by ownership, sector and corporate group.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316242C'/%3E%3Crect x='5' y='17' width='6' height='10' fill='%23A8322E'/%3E%3Crect x='13' y='11' width='6' height='16' fill='%2316646E'/%3E%3Crect x='21' y='21' width='6' height='6' fill='%23C08A2E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -247,9 +248,9 @@ footer .wrap{border-top:1px solid #2B3A41;padding-top:22px}
     <div class="gridwrap" id="gridwrap">
       <div id="grid"></div>
       <div class="gcap">
-        <button class="chip" data-own="SOE" aria-pressed="false"><i style="background:var(--soe)"></i><span>State-owned · 75</span></button>
-        <button class="chip" data-own="Private" aria-pressed="false"><i style="background:var(--private)"></i><span>Domestic private · 101</span></button>
-        <button class="chip" data-own="FDI" aria-pressed="false"><i style="background:var(--fdi)"></i><span>Foreign-invested · 24</span></button>
+        <button class="chip" data-own="SOE" aria-pressed="false"><i style="background:var(--soe)"></i><span data-lab="State-owned"></span></button>
+        <button class="chip" data-own="Private" aria-pressed="false"><i style="background:var(--private)"></i><span data-lab="Domestic private"></span></button>
+        <button class="chip" data-own="FDI" aria-pressed="false"><i style="background:var(--fdi)"></i><span data-lab="Foreign-invested"></span></button>
         <span class="gnote">One square per enterprise, largest first. Click a label to isolate a group.</span>
       </div>
     </div>
@@ -483,6 +484,10 @@ function firmTip(f,tot,extra){
     show(firmTip(V.firms[+r.dataset.i],V.total),e);
   });
   wrapEl.addEventListener('mouseout',function(e){if(e.target.closest('rect'))hide();});
+  document.querySelectorAll('.chip').forEach(function(b){
+    var sp=b.querySelector('span'),o=V.own[b.dataset.own];
+    if(sp&&o)sp.textContent=sp.dataset.lab+' \u00b7 '+o.n;
+  });
   document.querySelectorAll('.chip').forEach(function(b){
     b.addEventListener('click',function(){
       var on=b.getAttribute('aria-pressed')==='true';

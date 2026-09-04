@@ -2,7 +2,9 @@
 
 An interactive breakdown of Vietnam's largest contributors to the state budget in **financial year 2025**, by ownership, sector and corporate group.
 
-**Live page:** `https://<your-username>.github.io/<repo-name>/`
+**Live page:** https://sachadray.github.io/vietnam-budget-contribution/
+
+Pages serves from `main`, folder `/ (root)`. The repository must be **public** for Pages to serve on a free GitHub account.
 
 ## What's here
 
@@ -71,16 +73,12 @@ One figure differs. The publisher books the Ho Chi Minh City lottery company und
 
 The page is static and self-contained. To put it on GitHub Pages:
 
-```bash
-git init
-git add .
-git commit -m "Vietnam state budget contributors, FY2025"
-git branch -M main
-git remote add origin git@github.com:<your-username>/<repo-name>.git
-git push -u origin main
-```
+The repository is already pushed to `github.com/sachadray/vietnam-budget-contribution`. To serve it:
 
-Then in the repository, go to **Settings → Pages**, set **Source** to *Deploy from a branch*, branch `main`, folder `/ (root)`, and save. The page goes live at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
+1. **Settings → General → Danger Zone → Change visibility → Public.** GitHub Pages will not serve a private repository on a free account.
+2. **Settings → Pages**, set **Source** to *Deploy from a branch*, branch `main`, folder `/ (root)`, and save.
+
+The page goes live at https://sachadray.github.io/vietnam-budget-contribution/ within a minute or two.
 
 The `.nojekyll` file stops GitHub Pages running the content through Jekyll, which is unnecessary here.
 

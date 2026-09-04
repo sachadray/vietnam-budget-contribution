@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who pays Vietnam's tax bill — VNTAX 200 and STATE 100</title>
+<meta name="description" content="An interactive breakdown of Vietnam's largest contributors to the state budget, by ownership, sector and corporate group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16242C; --paper:#E7EBE5; --panel:#F8F9F6; --rule:#C3CCC2; --mute:#5C6B66;
+  --soe:#A8322E; --private:#16646E; --fdi:#C08A2E;
+  --sub:#D98E6A; --par:#16242C;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Public Sans","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.62;
+  font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.012em;margin:0}
+p{margin:0 0 1.05em}
+a{color:var(--private)}
+button{font:inherit;color:inherit}
+
+/* nav */
+nav{position:sticky;top:0;z-index:60;background:rgba(231,235,229,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule)}
+nav .wrap{display:flex;gap:22px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{color:var(--mute);text-decoration:none;font-size:14.5px;font-weight:600;white-space:nowrap}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+nav .brand{font-family:Fraunces,Georgia,serif;color:var(--ink);font-weight:700;font-size:16px;margin-right:6px}
+
+/* hero */
+.hero{background:var(--ink);color:#EDEFE9;padding:62px 0 56px}
+.hero h1{font-size:clamp(36px,5.9vw,68px);line-height:1.03;color:#FBFBF7;max-width:15ch;font-weight:700}
+.hero .sub{margin-top:20px;max-width:62ch;font-size:19px;line-height:1.6;color:#B9C6C4}
+.hero .sub b{color:#FBFBF7;font-weight:600}
+.gridwrap{margin-top:42px;background:#0F1A20;border:1px solid #2B3A41;padding:24px 24px 18px;border-radius:3px}
+.gridwrap svg{display:block}
+.gridwrap rect{cursor:crosshair;transition:opacity .12s}
+.gridwrap.dim rect{opacity:.24}
+.gridwrap.dim rect.on{opacity:1}
+.gcap{display:flex;flex-wrap:wrap;gap:9px 12px;margin-top:18px;font-size:14.5px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#1B2A32;border:1px solid #33444C;
+  color:#DDE3DE;padding:5px 12px;border-radius:999px;cursor:pointer;font-size:13.5px;font-weight:600}
+.chip i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.chip[aria-pressed="true"]{background:#2A3D46;border-color:#5C7480}
+.gnote{color:#8A9B99;font-size:13.5px;margin-left:4px}
+
+/* sections */
+section{padding:74px 0;border-top:1px solid var(--rule)}
+h2{font-size:clamp(26px,3.4vw,37px);line-height:1.14;max-width:23ch}
+h3{font-size:20px}
+.kicker{font-size:14.5px;color:var(--mute);font-weight:600;margin-bottom:11px}
+.after{margin-top:20px;max-width:66ch;color:#2A3B42}
+.unit{font-size:13.5px;color:var(--mute);margin-top:12px;max-width:80ch}
+
+/* divergence */
+.div2{display:grid;gap:30px;margin:40px 0 8px}
+.divrow .lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.divrow .lab strong{font-family:Fraunces,Georgia,serif;font-size:21px;font-weight:600}
+.divrow .lab span{font-size:14.5px;color:var(--mute)}
+.hbar{display:flex;height:52px;border-radius:3px;overflow:hidden}
+.hbar .seg{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;
+  font-weight:700;font-size:19px;cursor:crosshair;transition:filter .12s}
+.hbar .seg:hover{filter:brightness(1.14)}
+.gapnote{margin-top:24px;padding:19px 23px;background:var(--panel);border-left:4px solid var(--soe);max-width:70ch}
+.gapnote p{margin:0}
+
+/* stats */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin-top:38px}
+.stat{background:var(--panel);padding:24px 22px}
+.stat b{display:block;font-family:Fraunces,Georgia,serif;font-size:39px;line-height:1.04;font-weight:700}
+.stat span{display:block;margin-top:8px;font-size:14.5px;color:var(--mute);line-height:1.48}
+.stat.s b{color:var(--soe)}
+
+/* sector rows */
+.sectbl{margin-top:36px}
+.secrow>*{min-width:0}
+.tbl{table-layout:auto}
+.sechead,.secrow{display:grid;grid-template-columns:222px 1fr 74px 60px;gap:16px;align-items:center}
+.sechead{font-size:13.5px;color:var(--mute);padding-bottom:8px;border-bottom:1.5px solid var(--ink);font-weight:600}
+.sechead div:nth-child(3),.sechead div:nth-child(4){text-align:right}
+.sechead.dark{border-bottom-color:#3A4C55;color:#8FA8A5}
+.secrow{padding:8px 0;border-bottom:1px solid var(--rule)}
+.secname{font-size:15.5px;font-weight:600;line-height:1.3}
+.secn{display:block;font-weight:400;color:var(--mute);font-size:13px}
+.secbar{display:flex;height:19px}
+.secbar .seg{height:100%;cursor:crosshair;transition:filter .12s}
+.secbar .seg:hover{filter:brightness(1.18)}
+.secval{text-align:right;font-size:15px;font-weight:600}
+.secsoe{text-align:right;font-size:14.5px;color:var(--mute)}
+
+/* two col */
+.two{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;margin-top:40px;align-items:start}
+.two>div{min-width:0}
+.gl{stroke:var(--rule);stroke-width:1}
+.ax{fill:var(--mute);font-family:"Public Sans",Arial,sans-serif;font-size:12.5px}
+.mark{stroke:var(--soe);stroke-width:1.5;stroke-dasharray:3 3}
+.anno{fill:var(--soe);font-family:"Public Sans",Arial,sans-serif;font-size:13.5px;font-weight:600}
+.curve{cursor:crosshair}
+ol.top{list-style:none;margin:0;padding:0}
+ol.top li{display:grid;grid-template-columns:148px 1fr 54px;gap:12px;align-items:center;
+  padding:5px 0;border-bottom:1px solid var(--rule);cursor:crosshair;min-width:0}
+ol.top li:hover{background:rgba(255,255,255,.55)}
+.tn{font-size:14.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tb{display:block;height:11px}
+.tb i{display:block;height:100%}
+.tv{text-align:right;font-size:14px;font-weight:600}
+
+/* mix */
+.mixrow{display:grid;grid-template-columns:172px 1fr 160px;gap:16px;align-items:center;
+  padding:10px 0;border-bottom:1px solid var(--rule)}
+.mixname{font-size:15.5px;font-weight:600}
+.mixbar{display:flex;height:26px}
+.mixbar .seg{height:100%;cursor:crosshair;transition:filter .12s}
+.mixbar .seg:hover{filter:brightness(1.18)}
+.mixval{text-align:right;font-size:14px;color:var(--mute)}
+.key{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:14px;color:var(--mute)}
+.key .k{display:inline-flex;align-items:center;gap:7px}
+.key .k i{width:12px;height:12px;border-radius:2px;display:inline-block}
+
+/* ---- STATE 100 part ---- */
+.state{background:#101C22;color:#C8D4D1}
+.state h2,.state h3{color:#FBFBF7}
+.state .kicker{color:#8FA8A5}
+.state .after,.state p{color:#AEBDBA}
+.state .unit{color:#8195A0}
+.state .strip{background:#2B3A41;border-color:#2B3A41}
+.state .stat{background:#16242C}
+.state .stat b{color:#FBFBF7}
+.state .stat span{color:#96A8A5}
+.state .stat.s b{color:#E0806B}
+
+/* waterfall */
+.wf{display:grid;grid-template-columns:230px 1fr 92px;gap:16px;align-items:center;margin:8px 0}
+.wf .lb{font-size:15px}
+.wf .tr{height:30px;background:#1B2A32;border-radius:2px;overflow:hidden;display:flex}
+.wf .tr i{height:100%}
+.wf .vv{text-align:right;font-weight:600;font-size:15px}
+
+/* groups */
+.grp{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:14px;margin-top:34px;align-items:start}
+.gcard{background:#16242C;border:1px solid #2B3A41;border-radius:3px;padding:17px 18px;cursor:pointer;
+  transition:border-color .15s,background .15s;text-align:left;width:100%}
+.gcard:hover,.gcard:focus-visible{border-color:#5C7480;background:#1A2C34}
+.gcard[aria-expanded="true"]{border-color:var(--sub);background:#1A2C34}
+.gcard .gn{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600;color:#FBFBF7;line-height:1.25}
+.gcard .gv{display:block;font-family:Fraunces,Georgia,serif;font-size:25px;font-weight:700;margin-top:7px;color:#FBFBF7;line-height:1.1}
+.gcard .gm{display:block;font-size:13.5px;color:#8FA8A5;margin-top:4px;line-height:1.45}
+.gcard .gbar{display:flex;height:7px;margin-top:12px;border-radius:2px;overflow:hidden;background:#22333B}
+.gcard .gbar i{height:100%}
+.kids{margin-top:12px;padding-top:11px;border-top:1px solid #2B3A41;display:none}
+.gcard[aria-expanded="true"] .kids{display:block}
+.kids div{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:#AEBDBA;padding:2px 0}
+.kids div b{color:#DDE3DE;font-weight:600}
+
+/* table */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:30px 0 14px}
+.tools input,.tools select{background:#16242C;border:1px solid #33444C;color:#EDEFE9;
+  padding:9px 13px;border-radius:3px;font-size:14.5px;min-width:150px}
+.tools input::placeholder{color:#7D9198}
+.tools input:focus,.tools select:focus{outline:2px solid var(--sub);outline-offset:1px}
+.count{font-size:14px;color:#8FA8A5;margin-left:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{text-align:left;padding:9px 10px;border-bottom:1.5px solid #3A4C55;color:#9FB4B1;
+  font-weight:600;font-size:13.5px;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:52px;background:#101C22}
+.tbl th:hover{color:#FBFBF7}
+.tbl th.num,.tbl td.num{text-align:right}
+.tbl th[data-dir]::after{content:"";margin-left:5px;opacity:.9}
+.tbl th[data-dir="asc"]::after{content:"\2191"}
+.tbl th[data-dir="desc"]::after{content:"\2193"}
+.tbl td{padding:8px 10px;border-bottom:1px solid #22333B}
+.tbl tbody tr:hover{background:#17272F}
+.tbl .nm{font-weight:600;color:#EDEFE9}
+.tbl .cd{color:#8FA8A5;font-size:12.5px}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
+.tag.Parent{background:rgba(22,100,110,.34);color:#8FD3D8}
+.tag.Subsidiary{background:rgba(217,142,106,.24);color:#E8A77F}
+.tag.Standalone{background:#22333B;color:#9FB4B1}
+.netted{color:#E8A77F;font-weight:600}
+
+/* tooltip */
+#tip{position:fixed;z-index:200;pointer-events:none;opacity:0;transition:opacity .1s;
+  background:#0C1519;color:#EDEFE9;border:1px solid #3A4C55;border-radius:4px;padding:11px 14px;
+  font-size:13.5px;line-height:1.5;max-width:290px;box-shadow:0 8px 26px rgba(0,0,0,.42)}
+#tip.on{opacity:1}
+#tip .tt{font-weight:700;font-size:14.5px;color:#FBFBF7;display:block;margin-bottom:3px}
+#tip .tv{font-family:Fraunces,Georgia,serif;font-size:20px;font-weight:700;color:#FBFBF7;display:block;margin:4px 0 2px}
+#tip .tm{color:#9FB4B1;font-size:12.5px}
+#tip .tr{display:flex;justify-content:space-between;gap:16px;color:#C8D4D1}
+#tip .tr span:last-child{font-weight:600;color:#EDEFE9}
+#tip hr{border:0;border-top:1px solid #2B3A41;margin:7px 0}
+
+/* method */
+.method{background:var(--ink);color:#C4D0CD;padding:62px 0 78px}
+.method h2{color:#FBFBF7;max-width:26ch}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:34px;margin-top:36px}
+.method h3{color:#FBFBF7;font-size:19px;margin-bottom:8px}
+.method p,.method li{font-size:15.5px;line-height:1.62;color:#AEBDBA}
+.method a{color:#8FC3C6}
+.method ul{margin:0;padding-left:18px}
+.method li{margin-bottom:6px}
+footer{background:var(--ink);color:#7D9198;font-size:13.5px;padding:0 0 44px}
+footer .wrap{border-top:1px solid #2B3A41;padding-top:22px}
+
+@media (max-width:860px){
+  body{font-size:16px}
+  .two{grid-template-columns:1fr;gap:40px}
+  .sechead,.secrow{grid-template-columns:1fr 64px 52px;gap:10px}
+  .sechead div:nth-child(2),.secbar{grid-column:1/-1}
+  .mixrow,.wf{grid-template-columns:1fr;gap:8px}
+  .mixval,.wf .vv{text-align:left}
+  ol.top li{grid-template-columns:1fr 54px}
+  ol.top li .tb{grid-column:1/-1}
+  .stat b{font-size:33px}
+  .tbl .hide-s{display:none}
+  .tbl th{position:static}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="brand">VNTAX</span>
+  <a href="#all">All 200</a>
+  <a href="#split">Ownership</a>
+  <a href="#conc">Concentration</a>
+  <a href="#sectors">Sectors</a>
+  <a href="#state">State 100</a>
+  <a href="#groups">Groups</a>
+  <a href="#table">Full table</a>
+  <a href="#method">Method</a>
+</div></nav>
+
+<header class="hero" id="all">
+  <div class="wrap">
+    <h1>Who actually pays Vietnam's tax bill</h1>
+    <p class="sub">The 200 largest contributors remitted <b id="h-tot"></b> to the state budget in the 2025 financial year, more than a third of everything the state collected. Seventy-four are state-owned, and between them they account for <b id="h-soe"></b> of the money. Hover anything to read the numbers behind it.</p>
+    <div class="gridwrap" id="gridwrap">
+      <div id="grid"></div>
+      <div class="gcap">
+        <button class="chip" data-own="SOE" aria-pressed="false"><i style="background:var(--soe)"></i><span>State-owned · 75</span></button>
+        <button class="chip" data-own="Private" aria-pressed="false"><i style="background:var(--private)"></i><span>Domestic private · 101</span></button>
+        <button class="chip" data-own="FDI" aria-pressed="false"><i style="background:var(--fdi)"></i><span>Foreign-invested · 24</span></button>
+        <span class="gnote">One square per enterprise, largest first. Click a label to isolate a group.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="split">
+  <div class="wrap">
+    <div class="kicker">Headcount against money</div>
+    <h2>State firms are a third of the list and nearly half the revenue</h2>
+    <div class="div2">
+      <div class="divrow">
+        <div class="lab"><strong>Share of the 200 firms</strong><span>by number</span></div>
+        <div class="hbar" id="bar-firms"></div>
+      </div>
+      <div class="divrow">
+        <div class="lab"><strong>Share of the money</strong><span>by dong remitted</span></div>
+        <div class="hbar" id="bar-dong"></div>
+      </div>
+    </div>
+    <div class="gapnote"><p id="gap-txt"></p></div>
+    <div class="strip" id="strip-nat"></div>
+    <p class="unit">National revenue outturn from the General Statistics Office and Ministry of Finance.</p>
+    <h3 style="margin-top:54px">What changed from the year before</h3>
+    <p class="after" style="margin-top:10px" id="yoy-txt"></p>
+    <div class="div2" style="margin-top:26px">
+      <div class="divrow"><div class="lab"><strong>Financial year 2024</strong><span id="yoy-l24"></span></div><div class="hbar" id="bar-24"></div></div>
+      <div class="divrow"><div class="lab"><strong>Financial year 2025</strong><span id="yoy-l25"></span></div><div class="hbar" id="bar-25"></div></div>
+    </div>
+    <p class="unit">Both years on the same 200-firm cut-off. The FY2024 figures come from the list CafeF published in 2025.</p>
+  </div>
+</section>
+
+<section id="conc">
+  <div class="wrap">
+    <div class="kicker">Concentration</div>
+    <h2>A quarter of the list carries two-thirds of it</h2>
+    <div class="two">
+      <div>
+        <div id="curve"></div>
+        <p class="after" id="conc-txt"></p>
+      </div>
+      <div>
+        <div class="kicker">Twenty largest payers, &#8363; trillion</div>
+        <ol class="top" id="top20"></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sectors">
+  <div class="wrap">
+    <div class="kicker">Sector composition</div>
+    <h2>Where the state's share of the tax base is total, and where it has gone</h2>
+    <p class="after">Bar length is the sector's payment; colour is who paid it. The last column is the state-owned share.</p>
+    <div class="sectbl">
+      <div class="sechead"><div>Sector</div><div>Payment by ownership</div><div>&#8363;tn</div><div>State</div></div>
+      <div id="sec-rows"></div>
+    </div>
+    <p class="unit">Sectors below 0.4% of the list total are omitted. Conglomerates sit in the activity generating most of the payment; Vingroup is in real estate, where its land obligations arise.</p>
+    <p class="after">Tobacco and the provincial lotteries are entirely state-owned, and coal and mining is 97% state. Lotteries alone are 21 companies and &#8363;53tn, more than the whole steel and building materials sector. At the other end the state has essentially left automotive, securities, steel and real estate. Real estate is now the largest single sector on the list, and 91% of it is private &mdash; almost entirely because of one firm and one year of land payments.</p>
+  </div>
+</section>
+
+<section class="state" id="state">
+  <div class="wrap">
+    <div class="kicker">Inside the state sector</div>
+    <h2>STATE 100: the hundred largest state-owned taxpayers</h2>
+    <p class="after">CafeF publishes a separate ranking of state-owned enterprises, on the same financial year. It ranks parent companies and their larger subsidiaries in the same hundred slots, so the headline contribution is not the sum of the rows.</p>
+
+    <div class="strip" id="strip-state"></div>
+
+    <h3 style="margin-top:56px">Getting from the ranking to the contribution</h3>
+    <p class="after" style="margin-top:10px">Thirty-one of the hundred entries are subsidiaries of another entry. Their payments already sit inside the parent's figure, so they are netted out once.</p>
+    <div id="waterfall" style="margin-top:24px"></div>
+    <p class="unit">Published figure: &#8363;425,800 bn, about 16% of national revenue. The &#8363;35 bn difference against the row arithmetic is rounding in the source.</p>
+
+    <h3 style="margin-top:56px">What the state sector is made of</h3>
+    <p class="after" style="margin-top:10px">On the deduplicated basis, with the number of ranked entries in each sector shown alongside.</p>
+    <div class="sectbl" style="margin-top:26px">
+      <div class="sechead dark">
+        <div>Sector</div><div>Payment</div><div>&#8363;tn</div><div>Share</div></div>
+      <div id="state-sec"></div>
+    </div>
+    <p class="unit">The publisher books the Ho Chi Minh City lottery company under lotteries while also leaving it inside its parent HFIC, which is why their lottery figure is &#8363;59.7tn against &#8363;53.5tn here. Everything else reconciles exactly.</p>
+  </div>
+</section>
+
+<section class="state" id="groups" style="border-top:1px solid #2B3A41">
+  <div class="wrap">
+    <div class="kicker">Corporate structure</div>
+    <h2>Eleven groups, forty-two of the hundred slots</h2>
+    <p class="after">PetroVietnam alone occupies eleven places. The large figure is what the parent remits; the bar underneath shows how much of the group's ranked total sits in separately listed subsidiaries. Open a card to see them.</p>
+    <div class="grp" id="groups-grid"></div>
+    <p class="unit" id="grp-note"></p>
+  </div>
+</section>
+
+<section class="state" id="table" style="border-top:1px solid #2B3A41">
+  <div class="wrap">
+    <div class="kicker">Every state-owned enterprise on the list</div>
+    <h2>The full STATE 100</h2>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search name or code" aria-label="Search enterprises">
+      <select id="f-sec" aria-label="Filter by sector"><option value="">All sectors</option></select>
+      <select id="f-grp" aria-label="Filter by group"><option value="">All groups</option></select>
+      <select id="f-role" aria-label="Filter by role">
+        <option value="">All entries</option>
+        <option value="Parent">Group parents</option>
+        <option value="Subsidiary">Netted-out subsidiaries</option>
+        <option value="Standalone">Standalone SOEs</option>
+      </select>
+      <span class="count" id="tcount"></span>
+    </div>
+    <table class="tbl">
+      <thead><tr>
+        <th data-k="r" class="num">#</th>
+        <th data-k="n">Enterprise</th>
+        <th data-k="s" class="hide-s">Sector</th>
+        <th data-k="g" class="hide-s">Group</th>
+        <th data-k="role" class="hide-s">Role</th>
+        <th data-k="t" class="num" data-dir="desc">&#8363; bn</th>
+        <th data-k="cit" class="num hide-s">of which CIT</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <p class="unit">Rows marked as netted-out subsidiaries are excluded from the &#8363;425.8tn contribution to avoid counting the same payment twice. Blank tax components mean the publisher does not disclose the split for that enterprise.</p>
+  </div>
+</section>
+
+<section class="method" id="method">
+  <div class="wrap">
+    <h2>How this was put together</h2>
+    <div class="mgrid">
+      <div>
+        <h3>Sources</h3>
+        <p>CafeF labels each list by its publication year, not the year of the payments. The lists published in 2026 measure amounts remitted in financial year 2025, and those are the ones used here. PetroVietnam is &#8363;90,991 bn in both, which is how the convention was confirmed.</p>
+        <p><a href="https://cafef.vn/du-lieu/vntax200/2026/top-200-doanh-nghiep.chn">VNTAX 200</a> &nbsp;<a href="https://cafef.vn/du-lieu/state100/doanh-nghiep.chn">STATE 100</a> &nbsp;<a href="https://cafef.vn/du-lieu/private100/2026/top-100-doanh-nghiep.chn">PRIVATE 100</a></p>
+      </div>
+      <div>
+        <h3>Classifying ownership</h3>
+        <p>State-owned means the state holds control, central or provincial, including state-controlled joint ventures. Firms appearing on neither the STATE 100 nor the PRIVATE 100 were classified by hand; each override is documented in the accompanying workbook.</p>
+      </div>
+      <div>
+        <h3>Calls worth knowing about</h3>
+        <ul>
+          <li>Vietsovpetro counted as state: PetroVietnam holds 51%.</li>
+          <li>Sabeco counted as foreign: ThaiBev holds 53.6% while the ministry retains 36%.</li>
+          <li>Nghi Son Refinery counted as foreign: Idemitsu and KPI hold 70.2% against PetroVietnam's 25.1%.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What this is not</h3>
+        <ul>
+          <li>Not a census. Both lists are cut-offs, the STATE 100 at &#8363;468 bn.</li>
+          <li>Not tax incidence. Remittance bundles taxes the firm bears with value added tax and withheld income tax it collects on the state's behalf.</li>
+          <li>Not audited accounts. These are publisher figures, reconciled against the publisher's own published totals but not against Ministry of Finance returns.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Data from CafeF VNTAX 200 and STATE 100. National budget outturn from the General Statistics Office. Analysis and page built independently; no affiliation with the publisher.</div></footer>
+
+<div id="tip" role="status" aria-live="polite"></div>
+<script type="application/json" id="payload">{"national":2650100.0,"v":{"total":989254.0,"firms":[{"r":1,"n":"Vingroup","fn":"Tập đoàn Vingroup - Công ty Cổ phần","c":"VIC","o":"Private","s":"Real estate & construction","t":148773.0,"d":[23183.0,0,17043.0,5057.0,93813.0]},{"r":2,"n":"PetroVietnam","fn":"Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam","c":"PVN","o":"SOE","s":"Oil, gas & fuels","t":90991.0,"d":[12585.0,8648.0,14599.0,1865.0,0]},{"r":3,"n":"Viettel","fn":"Tập đoàn Công nghiệp - Viễn thông Quân đội (Viettel)","c":"VIETTEL","o":"SOE","s":"Technology & telecom","t":42290.0,"d":[0,0,0,0,0]},{"r":4,"n":"Petrolimex","fn":"Tập đoàn Xăng dầu Việt Nam","c":"PLX","o":"SOE","s":"Oil, gas & fuels","t":30575.0,"d":[3055.0,6397.0,727.0,320.0,0]},{"r":5,"n":"Heineken Vietnam","fn":"Công ty TNHH Nhà máy Bia Heineken Việt Nam","c":"HEINEKEN","o":"FDI","s":"Food, beverage & brewing","t":27000.0,"d":[0,0,0,0,0]},{"r":6,"n":"Toyota Vietnam","fn":"Công ty Ô tô Toyota Việt Nam","c":"TOYOTAVN","o":"FDI","s":"Automotive","t":26000.0,"d":[0,0,0,0,0]},{"r":7,"n":"Sunshine Group","fn":"Công ty Cổ phần Tập đoàn Sunshine","c":"KSF","o":"Private","s":"Real estate & construction","t":24045.0,"d":[0,0,0,0,0]},{"r":8,"n":"Vinacomin","fn":"Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam","c":"VINACOMIN","o":"SOE","s":"Coal & mining","t":24031.0,"d":[3746.0,2281.0,1732.0,0,423.0]},{"r":9,"n":"NSRP","fn":"Công ty TNHH Lọc hóa dầu Nghi Sơn","c":"NSRP","o":"FDI","s":"Oil, gas & fuels","t":23000.0,"d":[0,0,0,0,0]},{"r":10,"n":"Vinataba","fn":"Tổng Công ty Thuốc lá Việt Nam - Công ty TNHH MTV","c":"VINATABA","o":"SOE","s":"Tobacco","t":22335.0,"d":[3546.0,0,418.0,0,0]},{"r":11,"n":"Vietsovpetro","fn":"Liên doanh Việt - Nga Vietsovpetro","c":"VIETSOVPETRO","o":"SOE","s":"Oil, gas & fuels","t":21450.0,"d":[0,0,0,0,0]},{"r":12,"n":"Thaco Group","fn":"CTCP Tập đoàn Trường Hải","c":"THA","o":"Private","s":"Automotive","t":21158.0,"d":[0,0,0,0,0]},{"r":13,"n":"EVN","fn":"Tập đoàn Điện lực Việt Nam - Công ty TNHH MTV","c":"EVN","o":"SOE","s":"Power & electrical","t":20891.0,"d":[8367.0,0,1201.0,1163.0,0]},{"r":14,"n":"Sabeco","fn":"Tổng CTCP Bia - Rượu - Nước giải khát Sài Gòn","c":"SAB","o":"FDI","s":"Food, beverage & brewing","t":14917.0,"d":[2118.0,0,1057.0,120.0,0]},{"r":15,"n":"Ciputra Hanoi","fn":"Công ty TNHH Phát Triển Khu đô thị Nam Thăng Long","c":"CIPUTRAHN","o":"FDI","s":"Real estate & construction","t":13600.0,"d":[0,0,0,0,0]},{"r":16,"n":"NH Smart City","fn":"Công ty Cổ phần Đầu tư phát triển Thành phố Thông minh Bắc Hà Nội","c":"NHSC","o":"Private","s":"Real estate & construction","t":13171.0,"d":[0,0,0,0,0]},{"r":17,"n":"Hòa Phát Group","fn":"Công ty cổ phần Tập đoàn Hòa Phát","c":"HPG","o":"Private","s":"Steel & building materials","t":12954.0,"d":[903.0,8766.0,1995.0,211.0,0]},{"r":18,"n":"Vietcombank","fn":"Ngân hàng Thương mại cổ phần Ngoại thương Việt Nam","c":"VCB","o":"SOE","s":"Banking","t":12494.0,"d":[835.0,0,9242.0,0,0]},{"r":19,"n":"Thành Công Group","fn":"Tập đoàn Thành Công (TC Group)","c":"TCGROUP","o":"Private","s":"Automotive","t":12441.0,"d":[0,0,0,0,0]},{"r":20,"n":"Honda Vietnam","fn":"Công ty Honda Việt Nam","c":"HONDA","o":"FDI","s":"Automotive","t":11880.0,"d":[0,0,0,0,0]},{"r":21,"n":"BIDV","fn":"Ngân hàng Thương mại cổ phần Đầu tư và Phát triển Việt Nam","c":"BID","o":"SOE","s":"Banking","t":11374.0,"d":[1430.0,0,6768.0,0,0]},{"r":22,"n":"Ford Vietnam","fn":"Công ty TNHH Ford Việt Nam","c":"FORDVN","o":"FDI","s":"Automotive","t":11300.0,"d":[0,0,0,0,0]},{"r":23,"n":"FPT","fn":"Công ty Cổ phần FPT","c":"FPT","o":"Private","s":"Technology & telecom","t":11291.0,"d":[6437.0,0,2238.0,2182.0,0]},{"r":24,"n":"Techcombank","fn":"Ngân hàng TMCP Kỹ Thương Việt Nam","c":"TCB","o":"Private","s":"Banking","t":10984.0,"d":[760.0,0,7178.0,0,0]},{"r":25,"n":"Vietinbank","fn":"Ngân hàng Thương mại Cổ phần Công thương Việt Nam","c":"CTG","o":"SOE","s":"Banking","t":10057.0,"d":[998.0,0,7541.0,0,0]},{"r":26,"n":"MB","fn":"Ngân hàng Thương mại cổ phần Quân đội","c":"MBB","o":"SOE","s":"Banking","t":10004.0,"d":[1105.0,0,6518.0,0,0]},{"r":27,"n":"SCIC","fn":"Tổng Công ty Đầu tư và Kinh doanh vốn Nhà nước","c":"SCIC","o":"SOE","s":"Finance & investment","t":8404.0,"d":[0,0,384.0,0,0]},{"r":28,"n":"Agribank","fn":"Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam","c":"AGRIBANK","o":"SOE","s":"Banking","t":7854.0,"d":[763.0,0,5658.0,0,0]},{"r":29,"n":"VPBank","fn":"Ngân hàng Thương mại Cổ phần Việt Nam Thịnh Vượng","c":"VPB","o":"Private","s":"Banking","t":6883.0,"d":[879.0,0,4128.0,0,0]},{"r":30,"n":"HFIC","fn":"Công ty Đầu tư Tài chính Nhà nước T.P Hồ Chí Minh","c":"HFIC","o":"SOE","s":"Finance & investment","t":6794.0,"d":[1441.0,0,683.0,500.0,339.0]},{"r":31,"n":"VNPT","fn":"Tập đoàn Bưu chính Viễn thông Việt Nam","c":"VNPT","o":"SOE","s":"Technology & telecom","t":6078.0,"d":[0,0,0,0,0]},{"r":32,"n":"ACB","fn":"Ngân hàng Thương Mại Cổ Phần Á Châu","c":"ACB","o":"Private","s":"Banking","t":5782.0,"d":[452.0,0,4335.0,0,0]},{"r":33,"n":"CTX Holdings","fn":"Tổng Công ty Cổ phần Đầu tư Xây dựng và Thương mại Việt Nam","c":"CTX","o":"Private","s":"Real estate & construction","t":5127.0,"d":[76.0,0,3.0,0,4970.0]},{"r":34,"n":"ACV","fn":"Tổng công ty Cảng hàng không Việt Nam - CTCP","c":"ACV","o":"SOE","s":"Aviation","t":4656.0,"d":[211.0,0,2582.0,403.0,149.0]},{"r":35,"n":"Masan Group","fn":"Công ty Cổ phần Tập đoàn MaSan","c":"MSN","o":"Private","s":"Food, beverage & brewing","t":4636.0,"d":[1854.0,0,1274.0,393.0,0]},{"r":36,"n":"Sacombank","fn":"Ngân hàng Thương mại Cổ phần Sài Gòn Tài Lộc","c":"STB","o":"Private","s":"Banking","t":4304.0,"d":[830.0,0,2773.0,0,0]},{"r":37,"n":"Khatoco","fn":"Tổng Công ty Khánh Việt","c":"KHATOCO","o":"SOE","s":"Tobacco","t":4292.0,"d":[537.0,78.0,58.0,0,0]},{"r":38,"n":"Habeco","fn":"Tổng CTCP Bia - Rượu - Nước giải khát Hà Nội","c":"BHN","o":"SOE","s":"Food, beverage & brewing","t":4158.0,"d":[613.0,0,155.0,0,0]},{"r":39,"n":"Vinamilk","fn":"Công ty Cổ phần Sữa Việt Nam","c":"VNM","o":"Private","s":"Food, beverage & brewing","t":3856.0,"d":[1777.0,0,1536.0,311.0,0]},{"r":40,"n":"HDBank","fn":"Ngân hàng TMCP Phát triển T.P Hồ Chí Minh","c":"HDB","o":"Private","s":"Banking","t":3744.0,"d":[521.0,0,2592.0,0,0]},{"r":41,"n":"CNS","fn":"Tổng Công ty Công nghiệp Sài Gòn - TNHH Một thành viên","c":"CNS","o":"SOE","s":"Tobacco","t":3691.0,"d":[421.0,77.0,107.0,19.0,0]},{"r":42,"n":"Thalexim","fn":"Tổng Công ty Thương mại Xuất nhập khẩu Thanh Lễ - CTCP","c":"TLP","o":"Private","s":"Oil, gas & fuels","t":3468.0,"d":[158.0,913.0,18.0,0,0]},{"r":43,"n":"Vietnam Rubber Group","fn":"Tập đoàn Công nghiệp Cao su Việt Nam","c":"GVR","o":"SOE","s":"Chemicals, plastics & rubber","t":3413.0,"d":[858.0,0,1232.0,162.0,751.0]},{"r":44,"n":"BIM Group","fn":"Công ty Cổ phần Tập đoàn BIM","c":"BIMGROUP","o":"Private","s":"Power & electrical","t":3316.0,"d":[983.0,0,859.0,135.0,0]},{"r":45,"n":"LPBank","fn":"Ngân hàng Thương mại cổ phần Lộc Phát Việt Nam","c":"LPB","o":"Private","s":"Banking","t":3298.0,"d":[55.0,0,2600.0,0,0]},{"r":46,"n":"Vietnam Airlines","fn":"Tổng Công ty Hàng không Việt Nam - CTCP","c":"HVN","o":"SOE","s":"Aviation","t":3291.0,"d":[969.0,0,416.0,874.0,0]},{"r":47,"n":"Vietnam Exchange","fn":"Sở Giao dịch Chứng khoán Việt Nam","c":"VNEX","o":"SOE","s":"Finance & investment","t":3283.0,"d":[6.0,0,659.0,0,0]},{"r":48,"n":"SHB","fn":"Ngân hàng Thương mại cổ phần Sài Gòn - Hà Nội","c":"SHB","o":"Private","s":"Banking","t":3249.0,"d":[320.0,0,2309.0,0,0]},{"r":49,"n":"Sawaco","fn":"Tổng Công ty Cấp nước Sài Gòn","c":"SAWACO","o":"SOE","s":"Water & utilities","t":3179.0,"d":[232.0,0,337.0,0,0]},{"r":50,"n":"Taseco Land","fn":"Công ty cổ phần Đầu tư Bất động sản Taseco","c":"TAL","o":"Private","s":"Real estate & construction","t":3148.0,"d":[198.0,0,195.0,0,2728.0]},{"r":51,"n":"Mitsubishi Motors","fn":"Công ty TNHH ô tô Mitsubishi Việt Nam","c":"MMVN","o":"FDI","s":"Automotive","t":3000.0,"d":[0,0,0,0,0]},{"r":52,"n":"Apple Việt Nam","fn":"Công ty TNHH Apple Việt Nam","c":"APPLE","o":"FDI","s":"Retail & trade","t":3000.0,"d":[0,0,0,0,0]},{"r":53,"n":"Saigon New Port/SNP","fn":"Công ty TNHH MTV - Tổng Công ty Tân Cảng Sài Gòn","c":"SNP","o":"SOE","s":"Logistics & transport","t":3000.0,"d":[0,0,0,0,0]},{"r":54,"n":"Carlsberg Việt Nam","fn":"Công ty TNHH Bia Carlsberg Việt Nam","c":"CARLSBERG","o":"FDI","s":"Food, beverage & brewing","t":3000.0,"d":[0,0,0,0,0]},{"r":55,"n":"VATM","fn":"Tổng Công ty Quản lý bay Việt Nam","c":"VATM","o":"SOE","s":"Aviation","t":2948.0,"d":[0,0,358.0,0,0]},{"r":56,"n":"Gelex","fn":"Công ty Cổ phần Tập đoàn GELEX","c":"GEX","o":"Private","s":"Power & electrical","t":2892.0,"d":[1572.0,0,943.0,198.0,0]},{"r":57,"n":"Phát Đạt","fn":"Công ty cổ phần Phát triển Bất động sản Phát Đạt","c":"PDR","o":"Private","s":"Real estate & construction","t":2890.0,"d":[46.0,0,103.0,0,2711.0]},{"r":58,"n":"VPS Securities","fn":"Công ty cổ phần Chứng khoán VPS","c":"VCK","o":"Private","s":"Securities","t":2848.0,"d":[13.0,0,648.0,2187.0,0]},{"r":59,"n":"Long An Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT LONG AN","c":"XSLA","o":"SOE","s":"Lottery","t":2797.0,"d":[0,0,0,0,0]},{"r":60,"n":"Bạc Liêu Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT BẠC LIÊU","c":"XSBL","o":"SOE","s":"Lottery","t":2751.0,"d":[640.0,0,207.0,0,0]},{"r":61,"n":"Bình Dương Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT BÌNH DƯƠNG","c":"XSBINHDUONG","o":"SOE","s":"Lottery","t":2749.0,"d":[630.0,0,212.0,0,0]},{"r":62,"n":"TPBank","fn":"Ngân hàng Thương mại cổ phần Tiên Phong","c":"TPB","o":"Private","s":"Banking","t":2744.0,"d":[400.0,0,1552.0,0,0]},{"r":63,"n":"Bến Tre Lottery","fn":"Công ty TNHH MTV Xổ Số Kiến Thiết Bến Tre","c":"XSBENTRE","o":"SOE","s":"Lottery","t":2738.0,"d":[643.0,0,207.0,0,0]},{"r":64,"n":"VIB","fn":"Ngân hàng Thương mại cổ phần Quốc tế Việt Nam","c":"VIB","o":"Private","s":"Banking","t":2731.0,"d":[262.0,0,1944.0,0,0]},{"r":65,"n":"Cà Mau Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Cà Mau","c":"XSCM","o":"SOE","s":"Lottery","t":2721.0,"d":[640.0,0,175.0,0,0]},{"r":66,"n":"Tây Ninh Lottery","fn":"Công ty TNHH Xổ số kiến thiết tỉnh Tây Ninh","c":"XSTN","o":"SOE","s":"Lottery","t":2718.0,"d":[643.0,0,195.0,243.0,0]},{"r":67,"n":"Đồng Tháp Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TỈNH ĐỒNG THÁP","c":"XSDT","o":"SOE","s":"Lottery","t":2682.0,"d":[646.0,0,190.0,0,0]},{"r":68,"n":"Kiên Giang Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT KIÊN GIANG","c":"XSKG","o":"SOE","s":"Lottery","t":2680.0,"d":[659.0,0,179.0,0,0]},{"r":69,"n":"Trà Vinh Lottery","fn":"Xổ số kiến thiết tỉnh Trà Vinh","c":"XSTV","o":"SOE","s":"Lottery","t":2648.0,"d":[658.0,0,170.0,0,0]},{"r":70,"n":"Bình Thuận Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Bình Thuận","c":"XSBINHTHUAN","o":"SOE","s":"Lottery","t":2635.0,"d":[642.0,0,168.0,0,0]},{"r":71,"n":"Vĩnh Long Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Vĩnh Long","c":"XSVL","o":"SOE","s":"Lottery","t":2615.0,"d":[644.0,0,210.0,0,0]},{"r":72,"n":"Satra","fn":"Tổng Công ty Thương mại Sài Gòn - TNHH MTV","c":"SATRA","o":"SOE","s":"Retail & trade","t":2602.0,"d":[0,0,51.0,0,0]},{"r":73,"n":"BRVT Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TỈNH BÀ RỊA - VŨNG TÀU","c":"XSBRVT","o":"SOE","s":"Lottery","t":2591.0,"d":[641.0,0,166.0,0,0]},{"r":74,"n":"Lâm Đồng Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Lâm Đồng","c":"XSLD","o":"SOE","s":"Lottery","t":2579.0,"d":[654.0,0,182.0,249.0,0]},{"r":75,"n":"An Giang Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT AN GIANG","c":"XSAG","o":"SOE","s":"Lottery","t":2543.0,"d":[642.0,0,157.0,240.0,0]},{"r":76,"n":"Tiền Giang Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TIỀN GIANG","c":"XSTG","o":"SOE","s":"Lottery","t":2529.0,"d":[650.0,0,140.0,244.0,0]},{"r":77,"n":"Đồng Nai Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT VÀ DỊCH VỤ TỔNG HỢP ĐỒNG NAI","c":"XSDONGNAI","o":"SOE","s":"Lottery","t":2460.0,"d":[646.0,0,198.0,0,0]},{"r":78,"n":"Cần Thơ Lottery","fn":"CÔNG TY TNHH NHÀ NƯỚC MTV XỔ SỐ KIẾN THIẾT CẦN THƠ","c":"XSCT","o":"SOE","s":"Lottery","t":2452.0,"d":[646.0,0,185.0,0,0]},{"r":79,"n":"Necorp","fn":"Tổng Công ty Đông Bắc - BQP","c":"NECORP","o":"SOE","s":"Coal & mining","t":2444.0,"d":[673.0,0,205.0,0,0]},{"r":80,"n":"JS REAL ESTATE","fn":"Công ty Cổ phần Bất động sản JS","c":"JSRE","o":"Private","s":"Real estate & construction","t":2400.0,"d":[0,0,0,0,0]},{"r":81,"n":"Corona Casino & Resort","fn":"Công ty cổ phần Đầu tư Phát triển Du lịch Phú Quốc","c":"DLPQ","o":"Private","s":"Tourism & hospitality","t":2333.0,"d":[1359.0,0,63.0,305.0,0]},{"r":82,"n":"Sóc Trăng Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Sóc Trăng","c":"XSST","o":"SOE","s":"Lottery","t":2321.0,"d":[0,0,0,0,0]},{"r":83,"n":"Vinachem","fn":"Tập đoàn Hoá chất Việt Nam","c":"VINACHEM","o":"SOE","s":"Chemicals, plastics & rubber","t":2268.0,"d":[781.0,0,692.0,112.0,0]},{"r":84,"n":"Vietlott","fn":"Công ty TNHH MTV Xổ số điện toán Việt Nam","c":"VIETLOTT","o":"SOE","s":"Lottery","t":2265.0,"d":[791.0,0,84.0,263.0,0]},{"r":85,"n":"TASCO","fn":"Công ty Cổ phần Tasco","c":"HUT","o":"Private","s":"Automotive","t":2227.0,"d":[773.0,0,206.0,111.0,0]},{"r":86,"n":"PNJ","fn":"Công ty Cổ phần Vàng bạc Đá quý Phú Nhuận","c":"PNJ","o":"Private","s":"Retail & trade","t":2128.0,"d":[981.0,0,608.0,361.0,0]},{"r":87,"n":"Hậu Giang Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Hậu Giang","c":"XSHG","o":"SOE","s":"Lottery","t":2115.0,"d":[598.0,0,111.0,0,0]},{"r":88,"n":"Mobile World Group","fn":"Công ty Cổ phần đầu tư Thế giới di động","c":"MWG","o":"Private","s":"Retail & trade","t":2056.0,"d":[21521.0,0,1546.0,457.0,0]},{"r":89,"n":"HUD","fn":"Tổng Công ty Đầu tư Phát triển nhà và Đô thị-Công ty TNHH","c":"HUDX","o":"SOE","s":"Real estate & construction","t":1951.0,"d":[0,0,157.0,0,1296.0]},{"r":90,"n":"REE","fn":"Công ty Cổ phần Cơ điện lạnh","c":"REE","o":"Private","s":"Power & electrical","t":1943.0,"d":[1060.0,0,323.0,0,0]},{"r":91,"n":"Bình Phước Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết và dịch vụ tổng hợp Bình Phước","c":"XSBP","o":"SOE","s":"Lottery","t":1910.0,"d":[496.0,0,117.0,0,0]},{"r":92,"n":"Vincom Retail","fn":"Công ty Cổ phần Vincom Retail","c":"VRE","o":"Private","s":"Real estate & construction","t":1900.0,"d":[625.0,0,1089.0,0,0]},{"r":93,"n":"VNG Group","fn":"Công ty Cổ phần Tập đoàn VNG","c":"VNZ","o":"Private","s":"Technology & telecom","t":1867.0,"d":[1005.0,0,48.0,336.0,0]},{"r":94,"n":"Petimex","fn":"Công ty TNHH MTV Thương mại Dầu khí Đồng Tháp","c":"PDT","o":"SOE","s":"Oil, gas & fuels","t":1819.0,"d":[0,0,25.0,0,0]},{"r":95,"n":"BaoViet Holdings","fn":"Tập đoàn Bảo Việt","c":"BVH","o":"SOE","s":"Insurance","t":1817.0,"d":[475.0,0,535.0,755.0,0]},{"r":96,"n":"Vietjetair","fn":"Công ty Cổ phần Hàng không Vietjet","c":"VJC","o":"Private","s":"Aviation","t":1809.0,"d":[558.0,0,172.0,611.0,0]},{"r":97,"n":"SSI","fn":"Công ty cổ phần Chứng khoán SSI","c":"SSI","o":"Private","s":"Securities","t":1807.0,"d":[0,0,580.0,1004.0,0]},{"r":98,"n":"Seabank","fn":"Ngân hàng Thương mại cổ phần Đông Nam Á","c":"SSB","o":"Private","s":"Banking","t":1755.0,"d":[124.0,0,1331.0,211.0,0]},{"r":99,"n":"Starlake","fn":"Công ty TNHH Phát triển THT","c":"STARLAKE","o":"FDI","s":"Real estate & construction","t":1600.0,"d":[0,0,0,0,0]},{"r":100,"n":"MSB","fn":"Ngân hàng Thương mại cổ phần Hàng hải Việt Nam","c":"MSB","o":"Private","s":"Banking","t":1591.0,"d":[98.0,0,1113.0,0,0]},{"r":101,"n":"Mobifone","fn":"Tổng Công ty Viễn thông Mobifone","c":"MOBIFONE","o":"SOE","s":"Technology & telecom","t":1500.0,"d":[0,0,0,0,0]},{"r":102,"n":"IDICO","fn":"Tổng công ty IDICO - Công ty Cổ phần","c":"IDC","o":"Private","s":"Power & electrical","t":1497.0,"d":[729.0,0,567.0,0,0]},{"r":103,"n":"PVI Holdings","fn":"Công ty Cổ phần PVI","c":"PVI","o":"FDI","s":"Insurance","t":1481.0,"d":[917.0,0,302.0,234.0,0]},{"r":104,"n":"Tân Á Đại Thành Investment Group","fn":"CTCP Đầu tư Tập đoàn Tân Á Đại Thành","c":"TADT","o":"Private","s":"Real estate & construction","t":1474.0,"d":[397.0,0,327.0,38.0,621.0]},{"r":105,"n":"Saigontourist","fn":"Tổng Công ty Du lịch Sài Gòn - TNHH Một thành viên","c":"SAIGONTOURIST","o":"SOE","s":"Tourism & hospitality","t":1439.0,"d":[281.0,0,78.0,31.0,742.0]},{"r":106,"n":"VIMID","fn":"CTCP Đầu tư Phát triển Máy Việt Nam","c":"VVS","o":"Private","s":"Automotive","t":1428.0,"d":[572.0,0,18.0,0,0]},{"r":107,"n":"Dofico","fn":"Tổng Công ty Công nghiệp Thực phẩm Đồng Nai","c":"DOFICO","o":"SOE","s":"Tobacco","t":1402.0,"d":[200.0,0,28.0,0,0]},{"r":108,"n":"VSIP Nghệ An","fn":"Công ty TNHH VSIP Nghệ An","c":"VSIPNA","o":"FDI","s":"Real estate & construction","t":1377.0,"d":[0,0,0,0,0]},{"r":109,"n":"Eximbank","fn":"Ngân hàng Thương mại Cổ phần Xuất nhập khẩu Việt Nam","c":"EIB","o":"Private","s":"Banking","t":1298.0,"d":[269.0,0,730.0,0,0]},{"r":110,"n":"Dai-ichi Life","fn":"Công ty TNHH Bảo hiểm Nhân thọ Dai-ichi Việt Nam","c":"DAIICHILIFE","o":"FDI","s":"Insurance","t":1295.0,"d":[0,0,897.0,234.0,0]},{"r":111,"n":"Manulife Vietnam","fn":"Công ty TNHH Manulife (Việt Nam)","c":"MANULIFE","o":"FDI","s":"Insurance","t":1276.0,"d":[0,0,506.0,0,0]},{"r":112,"n":"Hoa Sen Group","fn":"Công ty Cổ phần Tập đoàn Hoa Sen","c":"HSG","o":"Private","s":"Steel & building materials","t":1230.0,"d":[260.0,782.0,92.0,0,0]},{"r":113,"n":"PC1 Group","fn":"Công ty Cổ phần Tập đoàn PC1","c":"PC1","o":"Private","s":"Power & electrical","t":1149.0,"d":[345.0,0,116.0,0,0]},{"r":114,"n":"BLUEMARQ GROUP","fn":"Công ty Cổ phần BLUEMARQ GROUP","c":"DXG","o":"Private","s":"Real estate & construction","t":1133.0,"d":[567.0,0,375.0,0,0]},{"r":115,"n":"Vicem","fn":"Tổng Công ty Công nghiệp Xi măng Việt Nam","c":"VICEM","o":"SOE","s":"Steel & building materials","t":1110.0,"d":[386.0,0,54.0,0,0]},{"r":116,"n":"VIMC","fn":"Tổng Công ty Hàng hải Việt Nam - CTCP","c":"MVN","o":"SOE","s":"Logistics & transport","t":1107.0,"d":[395.0,0,387.0,143.0,0]},{"r":117,"n":"Hoiana","fn":"Công ty TNHH Phát triển Nam Hội An","c":"HOIANA","o":"FDI","s":"Tourism & hospitality","t":1100.0,"d":[0,0,0,0,0]},{"r":118,"n":"Novaland Group","fn":"Công ty cổ phần Tập đoàn Đầu tư Địa ốc No Va","c":"NVL","o":"Private","s":"Real estate & construction","t":1095.0,"d":[432.0,0,389.0,64.0,107.0]},{"r":119,"n":"Văn Phú","fn":"Công ty cổ phần Phát triển Bất động sản Văn Phú","c":"VPI","o":"Private","s":"Real estate & construction","t":1093.0,"d":[96.0,0,40.0,16.0,936.0]},{"r":120,"n":"NamA Bank","fn":"Ngân hàng Thương mại cổ phần Nam Á","c":"NAB","o":"Private","s":"Banking","t":1073.0,"d":[0,0,799.0,192.0,0]},{"r":121,"n":"Bia Sài Gòn - Miền Trung","fn":"CTCP Bia Sài Gòn - Miền Trung","c":"SMB","o":"Private","s":"Food, beverage & brewing","t":1067.0,"d":[0,0,0,0,0]},{"r":122,"n":"QNS","fn":"Công ty Cổ phần Đường Quảng Ngãi","c":"QNS","o":"Private","s":"Food, beverage & brewing","t":1025.0,"d":[437.0,0,273.0,58.0,0]},{"r":123,"n":"KIM LONG MOTORS","fn":"CTCP Kim Long Motor Huế","c":"KLMH","o":"Private","s":"Automotive","t":1012.0,"d":[0,0,0,0,0]},{"r":124,"n":"OCB","fn":"Ngân hàng Thương mại cổ phần Phương Đông","c":"OCB","o":"Private","s":"Banking","t":1007.0,"d":[0,0,701.0,0,0]},{"r":125,"n":"World Auto","fn":"Công ty TNHH World Auto","c":"WORLDAUTO","o":"Private","s":"Automotive","t":1000.0,"d":[0,0,0,0,0]},{"r":126,"n":"GRAB","fn":"Công ty TNHH Grab","c":"GRAB","o":"FDI","s":"Technology & telecom","t":1000.0,"d":[0,0,0,0,0]},{"r":127,"n":"Long Sơn Petrochemicals","fn":"Công ty TNHH Hoá dầu Long Sơn","c":"LSPETRO","o":"FDI","s":"Chemicals, plastics & rubber","t":1000.0,"d":[0,0,0,0,0]},{"r":128,"n":"C.P Vietnam Corporation","fn":"Công ty cổ phần Chăn nuôi C.P Việt Nam","c":"CPVN","o":"FDI","s":"Manufacturing & other industry","t":1000.0,"d":[0,0,0,0,0]},{"r":129,"n":"Mercedes-Benz VietNam","fn":"Công ty TNHH Mercedes-Benz Việt Nam","c":"MERCEDESVN","o":"FDI","s":"Automotive","t":1000.0,"d":[0,0,0,0,0]},{"r":130,"n":"Unilever Vietnam","fn":"Công ty TNHH Quốc tế Unilever Việt Nam","c":"UNILEVER","o":"FDI","s":"Food, beverage & brewing","t":1000.0,"d":[0,0,0,0,0]},{"r":131,"n":"VNDirect","fn":"Công ty cổ phần Chứng khoán VNDirect","c":"VND","o":"Private","s":"Securities","t":966.0,"d":[0,0,305.0,599.0,0]},{"r":132,"n":"Saigon Petro","fn":"Công ty TNHH MTV Dầu khí Thành phố Hồ Chí Minh","c":"SAIGONPETRO","o":"SOE","s":"Oil, gas & fuels","t":965.0,"d":[0,0,0,0,0]},{"r":133,"n":"Petrosetco","fn":"Tổng công ty Cổ phần Dịch vụ Tổng hợp Dầu khí","c":"PET","o":"Private","s":"Retail & trade","t":929.0,"d":[639.0,0,82.0,152.0,0]},{"r":134,"n":"VNSteel","fn":"Tổng Công ty Thép Việt Nam - CTCP","c":"TVN","o":"SOE","s":"Steel & building materials","t":927.0,"d":[637.0,0,68.0,0,110.0]},{"r":135,"n":"Nutifood","fn":"Công ty Cổ phần Thực phẩm dinh dưỡng Nutifood","c":"NUTIFOOD","o":"Private","s":"Food, beverage & brewing","t":915.0,"d":[0,0,0,0,0]},{"r":136,"n":"Nam Long","fn":"Công ty cổ phần Đầu tư Nam Long","c":"NLG","o":"Private","s":"Real estate & construction","t":911.0,"d":[257.0,0,516.0,130.0,0]},{"r":137,"n":"Prudential","fn":"Công ty TNHH Bảo hiểm Nhân thọ Prudential Việt Nam","c":"PRUDENTIAL","o":"FDI","s":"Insurance","t":903.0,"d":[0,0,903.0,0,0]},{"r":138,"n":"Khang Điền","fn":"Công ty Cổ phần Đầu tư và Kinh doanh nhà Khang Điền","c":"KDH","o":"Private","s":"Real estate & construction","t":896.0,"d":[0,0,293.0,0,543.0]},{"r":139,"n":"Vinatex","fn":"Tập đoàn Dệt may Việt Nam","c":"VGT","o":"SOE","s":"Textiles","t":895.0,"d":[462.0,0,139.0,0,212.0]},{"r":140,"n":"AIG Group","fn":"Công ty Cổ phần Nguyên liệu Á Châu AIG","c":"AIG","o":"Private","s":"Food, beverage & brewing","t":895.0,"d":[393.0,0,273.0,0,0]},{"r":141,"n":"Nam Kim","fn":"Công ty Cổ phần Thép Nam Kim","c":"NKG","o":"Private","s":"Steel & building materials","t":876.0,"d":[3.0,723.0,107.0,0,0]},{"r":142,"n":"Sonadezi","fn":"Tổng Công ty Cổ phần phát triển khu Công nghiệp","c":"SNZ","o":"SOE","s":"Real estate & construction","t":876.0,"d":[175.0,0,436.0,0,0]},{"r":143,"n":"Đức Giang Chem","fn":"CTCP Tập đoàn Hoá chất Đức Giang","c":"DGC","o":"Private","s":"Chemicals, plastics & rubber","t":874.0,"d":[29.0,156.0,206.0,100.0,0]},{"r":144,"n":"HSC","fn":"Công ty Cổ phần Chứng khoán Thành phố Hồ Chí Minh","c":"HCM","o":"Private","s":"Securities","t":872.0,"d":[0,0,166.0,529.0,0]},{"r":145,"n":"Vietnam Railways","fn":"Công ty TNHH Một thành viên - Tập đoàn Đường sắt Quốc gia Việt Nam","c":"VNRAILWAYS","o":"SOE","s":"Logistics & transport","t":852.0,"d":[403.0,0,25.0,0,0]},{"r":146,"n":"Kinh Bac City","fn":"Tổng Công ty Phát triển đô thị Kinh Bắc-CTCP","c":"KBC","o":"Private","s":"Real estate & construction","t":804.0,"d":[486.0,0,239.0,0,0]},{"r":147,"n":"VNPost","fn":"TỔNG CÔNG TY BƯU ĐIỆN VIỆT NAM","c":"VNPOST","o":"SOE","s":"Logistics & transport","t":789.0,"d":[434.0,0,117.0,0,0]},{"r":148,"n":"CMC Group","fn":"Công ty Cổ phần Tập đoàn Công nghệ CMC","c":"CMG","o":"Private","s":"Technology & telecom","t":784.0,"d":[383.0,0,85.0,156.0,0]},{"r":149,"n":"Becamex IDC","fn":"Tập đoàn Đầu tư và Phát triển công nghiệp Becamex - CTCP","c":"BCM","o":"SOE","s":"Real estate & construction","t":773.0,"d":[320.0,0,342.0,0,0]},{"r":150,"n":"Vietcap Securities","fn":"Công ty cổ phần Chứng khoán Vietcap","c":"VCI","o":"Private","s":"Securities","t":764.0,"d":[0,0,154.0,608.0,0]},{"r":151,"n":"FPT Retail","fn":"Công ty Cổ phần Bán lẻ Kỹ thuật số FPT","c":"FRT","o":"Private","s":"Retail & trade","t":763.0,"d":[451.0,0,114.0,172.0,0]},{"r":152,"n":"ABBank","fn":"Ngân hàng Thương mại cổ phần An Bình","c":"ABB","o":"Private","s":"Banking","t":763.0,"d":[71.0,0,540.0,0,0]},{"r":153,"n":"Việt Phát","fn":"CTCP Đầu tư Thương mại Xuất nhập khẩu Việt Phát","c":"VPG","o":"Private","s":"Coal & mining","t":748.0,"d":[37.0,604.0,58.0,0,0]},{"r":154,"n":"Halobeco","fn":"CTCP Bia và nước giải khát Hạ Long","c":"HLB","o":"Private","s":"Food, beverage & brewing","t":745.0,"d":[107.0,0,35.0,0,0]},{"r":155,"n":"STAVIAN GROUP","fn":"CTCP Stavian Hoá chất","c":"STAVIAN","o":"Private","s":"Chemicals, plastics & rubber","t":736.0,"d":[0,0,0,0,0]},{"r":156,"n":"HSBC Việt Nam","fn":"HSBC Việt Nam","c":"HSBC","o":"FDI","s":"Banking","t":694.0,"d":[0,0,694.0,0,0]},{"r":157,"n":"Intimex Group","fn":"Công ty cổ phần Tập đoàn Intimex","c":"INTIMEXG","o":"Private","s":"Manufacturing & other industry","t":692.0,"d":[0,0,0,0,0]},{"r":158,"n":"AgriS","fn":"CTCP Thành Thành Công - Biên Hòa","c":"SBT","o":"Private","s":"Manufacturing & other industry","t":690.0,"d":[0,0,126.0,0,0]},{"r":159,"n":"Hoang Huy Group","fn":"Công ty cổ phần Đầu tư Dịch vụ Tài chính Hoàng Huy","c":"TCH","o":"Private","s":"Real estate & construction","t":670.0,"d":[264.0,0,207.0,0,0]},{"r":160,"n":"Hà Đô Group","fn":"Công ty Cổ phần Tập đoàn Hà Đô","c":"HDG","o":"Private","s":"Power & electrical","t":662.0,"d":[243.0,0,95.0,0,133.0]},{"r":161,"n":"MAS","fn":"CTCP Chứng khoán Mirae Asset (Việt Nam)","c":"MIRAEASSET","o":"FDI","s":"Securities","t":658.0,"d":[0,0,184.0,0,0]},{"r":162,"n":"Sông Đà Corp","fn":"Tổng Công ty Sông Đà - Công ty cổ phần","c":"SJG","o":"SOE","s":"Real estate & construction","t":624.0,"d":[182.0,0,119.0,0,0]},{"r":163,"n":"Licogi 18","fn":"Công ty Cổ phần Đầu tư và Xây dựng số 18","c":"L18","o":"Private","s":"Real estate & construction","t":621.0,"d":[68.0,0,86.0,0,410.0]},{"r":164,"n":"VSDC","fn":"Tổng Công ty lưu ký và bù trừ Chứng khoán Việt Nam","c":"VSDC","o":"SOE","s":"Finance & investment","t":602.0,"d":[0,0,122.0,0,0]},{"r":165,"n":"Tinnghia Corp","fn":"CTCP Tổng Công ty Tín Nghĩa","c":"TID","o":"Private","s":"Real estate & construction","t":591.0,"d":[270.0,0,281.0,0,0]},{"r":166,"n":"Gemadept","fn":"Công ty Cổ phần Tập đoàn Gemadept","c":"GMD","o":"Private","s":"Logistics & transport","t":564.0,"d":[122.0,51.0,244.0,106.0,0]},{"r":167,"n":"Bia Sai Gon - Ben Tre","fn":"CTCP Bia Sài Gòn - Bến Tre","c":"BSGBT","o":"Private","s":"Food, beverage & brewing","t":550.0,"d":[0,0,0,0,0]},{"r":168,"n":"DOJI","fn":"CTCP Tập đoàn Vàng bạc đá quý Doji","c":"DOJI","o":"Private","s":"Real estate & construction","t":545.0,"d":[0,0,0,0,0]},{"r":169,"n":"Handico","fn":"Tổng Công ty Đầu tư và phát triển Nhà Hà Nội","c":"HANDICO","o":"SOE","s":"Real estate & construction","t":543.0,"d":[0,0,11.0,0,335.0]},{"r":170,"n":"Yến Sào Khánh Hòa","fn":"Công ty TNHH Nhà nước MTV Yến sào Khánh Hòa","c":"YSKH","o":"SOE","s":"Food, beverage & brewing","t":535.0,"d":[160.0,0,100.0,0,0]},{"r":171,"n":"TH Milk Food","fn":"Công ty Cổ phần Thực phẩm Sữa TH","c":"THMF","o":"Private","s":"Food, beverage & brewing","t":529.0,"d":[0,0,0,0,0]},{"r":172,"n":"Kido Group","fn":"Tập đoàn KIDO","c":"KDC","o":"Private","s":"Food, beverage & brewing","t":525.0,"d":[372.0,0,73.0,66.0,0]},{"r":173,"n":"F88 Investment","fn":"Công ty cổ phần Đầu tư F88","c":"F88","o":"Private","s":"Finance & investment","t":496.0,"d":[334.0,0,49.0,77.0,0]},{"r":174,"n":"Nhựa Bình Minh","fn":"Công ty Cổ phần Nhựa Bình Minh","c":"BMP","o":"FDI","s":"Steel & building materials","t":488.0,"d":[150.0,0,303.0,0,0]},{"r":175,"n":"Licogi","fn":"Tổng Công ty Licogi - Công ty Cổ phần","c":"LIC","o":"Private","s":"Real estate & construction","t":487.0,"d":[98.0,0,18.0,0,0]},{"r":176,"n":"APFCO","fn":"Công ty Cổ phần Nông sản thực phẩm Quảng Ngãi","c":"APF","o":"Private","s":"Manufacturing & other industry","t":479.0,"d":[458.0,0,0,0,0]},{"r":177,"n":"Golden Gate Group","fn":"Công ty Cổ phần Tập đoàn Golden Gate","c":"GOLDENGATE","o":"Private","s":"Food, beverage & brewing","t":476.0,"d":[390.0,0,32.0,38.0,0]},{"r":178,"n":"Kienlong Bank","fn":"Ngân hàng Thương mại cổ phần Kiên Long","c":"KLB","o":"Private","s":"Banking","t":474.0,"d":[0,0,347.0,0,0]},{"r":179,"n":"SAMCO","fn":"Tổng Công ty Cơ khí Giao thông Vận tải Sài Gòn - TNHH MTV","c":"SAMCO","o":"SOE","s":"Automotive","t":468.0,"d":[0,0,69.0,0,0]},{"r":180,"n":"The PAN Group","fn":"Công ty Cổ phần Tập đoàn PAN","c":"PAN","o":"Private","s":"Food, beverage & brewing","t":465.0,"d":[140.0,0,174.0,108.0,0]},{"r":181,"n":"Tân Cảng Offshore Services","fn":"CTCP Dịch vụ Biển Tân Cảng","c":"TOS","o":"SOE","s":"Logistics & transport","t":461.0,"d":[217.0,94.0,95.0,0,0]},{"r":182,"n":"VEC","fn":"Tổng Công ty Phát triển đường cao tốc Việt Nam","c":"VECX","o":"SOE","s":"Real estate & construction","t":461.0,"d":[226.0,0,199.0,0,0]},{"r":183,"n":"SJCX","fn":"Công ty TNHH MTV Vàng bạc đá quý Sài Gòn","c":"SJCX","o":"SOE","s":"Retail & trade","t":452.0,"d":[78.0,0,101.0,0,0]},{"r":184,"n":"BacA Bank","fn":"Ngân hàng Thương mại cổ phần Bắc Á","c":"BAB","o":"Private","s":"Banking","t":446.0,"d":[0,0,248.0,0,0]},{"r":185,"n":"Phú Tài","fn":"Công ty Cổ phần Phú Tài","c":"PTB","o":"Private","s":"Steel & building materials","t":440.0,"d":[82.0,0,90.0,0,200.0]},{"r":186,"n":"Fecon","fn":"Công ty cổ phần FECON","c":"FCN","o":"Private","s":"Real estate & construction","t":432.0,"d":[0,0,33.0,0,308.0]},{"r":187,"n":"BBCC","fn":"CTCP Xây dựng và Sản xuất Vật liệu Xây dựng Biên Hòa","c":"VLB","o":"Private","s":"Steel & building materials","t":430.0,"d":[95.0,0,68.0,0,0]},{"r":188,"n":"Vinaconex","fn":"Tổng CTCP Xuất nhập khẩu và Xây dựng Việt Nam","c":"VCG","o":"Private","s":"Real estate & construction","t":428.0,"d":[1213.0,0,197.0,0,0]},{"r":189,"n":"Hawaco","fn":"Công ty TNHH MTV Nước sạch Hà Nội","c":"HAWACO","o":"SOE","s":"Water & utilities","t":425.0,"d":[0,0,67.0,0,0]},{"r":190,"n":"LOF","fn":"Công ty Cổ phần Sữa Quốc tế Lof","c":"IDP","o":"Private","s":"Food, beverage & brewing","t":421.0,"d":[306.0,0,17.0,72.0,0]},{"r":191,"n":"DatViet VAC Group Holdings","fn":"Công ty cổ phần DatViet VAC Group Holdings","c":"DVV","o":"Private","s":"Technology & telecom","t":421.0,"d":[227.0,0,113.0,64.0,0]},{"r":192,"n":"DHG Pharma","fn":"Công ty Cổ phần Dược Hậu Giang","c":"DHG","o":"FDI","s":"Manufacturing & other industry","t":421.0,"d":[152.0,0,125.0,53.0,0]},{"r":193,"n":"Vietnam Helicopters","fn":"Tổng Công ty Trực thăng Việt Nam - Công ty TNHH","c":"VNHELICOPTER","o":"SOE","s":"Aviation","t":419.0,"d":[0,0,0,0,0]},{"r":194,"n":"TMT Motor","fn":"Công ty cổ phần Ô tô TMT","c":"TMT","o":"Private","s":"Automotive","t":418.0,"d":[216.0,98.0,0,0,0]},{"r":195,"n":"Sơn Hà","fn":"CTCP Quốc tế Sơn Hà","c":"SHI","o":"Private","s":"Manufacturing & other industry","t":409.0,"d":[47.0,288.0,49.0,0,0]},{"r":196,"n":"Minh Phú","fn":"Công ty Cổ phần Tập đoàn Thủy sản Minh Phú","c":"MPC","o":"Private","s":"Manufacturing & other industry","t":402.0,"d":[18.0,0,23.0,0,0]},{"r":197,"n":"BIWASE","fn":"CTCP – Tổng Công ty Nước – Môi trường Bình Dương","c":"BWE","o":"Private","s":"Water & utilities","t":397.0,"d":[0,0,109.0,0,0]},{"r":198,"n":"KIS Việt Nam","fn":"Công ty Cổ phần Chứng khoán KIS Việt Nam","c":"KIS","o":"FDI","s":"Securities","t":395.0,"d":[0,0,74.0,0,0]},{"r":199,"n":"Coteccons","fn":"Công ty Cổ phần Xây dựng Coteccons","c":"CTD","o":"Private","s":"Real estate & construction","t":395.0,"d":[179.0,0,118.0,97.0,0]},{"r":200,"n":"An Cường Wood","fn":"Công ty Cổ phần Gỗ An Cường","c":"ACG","o":"Private","s":"Steel & building materials","t":385.0,"d":[0,0,148.0,0,0]}],"own":{"SOE":{"n":74,"v":445558.0},"Private":{"n":99,"v":390311.0},"FDI":{"n":27,"v":153385.0}},"sectors":[{"name":"Real estate & construction","n":32,"SOE":5228.0,"Private":213029.0,"FDI":16577.0,"tot":234834.0},{"name":"Oil, gas & fuels","n":7,"SOE":145800.0,"Private":3468.0,"FDI":23000.0,"tot":172268.0},{"name":"Banking","n":23,"SOE":51783.0,"Private":52126.0,"FDI":694.0,"tot":104603.0},{"name":"Automotive","n":13,"SOE":468.0,"Private":39684.0,"FDI":53180.0,"tot":93332.0},{"name":"Food, beverage & brewing","n":19,"SOE":4693.0,"Private":16105.0,"FDI":45917.0,"tot":66715.0},{"name":"Technology & telecom","n":8,"SOE":49868.0,"Private":14363.0,"FDI":1000.0,"tot":65231.0},{"name":"Lottery","n":21,"SOE":53499.0,"Private":0.0,"FDI":0.0,"tot":53499.0},{"name":"Power & electrical","n":7,"SOE":20891.0,"Private":11459.0,"FDI":0.0,"tot":32350.0},{"name":"Tobacco","n":4,"SOE":31720.0,"Private":0.0,"FDI":0.0,"tot":31720.0},{"name":"Coal & mining","n":3,"SOE":26475.0,"Private":748.0,"FDI":0.0,"tot":27223.0},{"name":"Finance & investment","n":5,"SOE":19083.0,"Private":496.0,"FDI":0.0,"tot":19579.0},{"name":"Steel & building materials","n":9,"SOE":2037.0,"Private":16315.0,"FDI":488.0,"tot":18840.0},{"name":"Aviation","n":5,"SOE":11314.0,"Private":1809.0,"FDI":0.0,"tot":13123.0},{"name":"Retail & trade","n":7,"SOE":3054.0,"Private":5876.0,"FDI":3000.0,"tot":11930.0},{"name":"Securities","n":7,"SOE":0.0,"Private":7257.0,"FDI":1053.0,"tot":8310.0},{"name":"Chemicals, plastics & rubber","n":5,"SOE":5681.0,"Private":1610.0,"FDI":1000.0,"tot":8291.0},{"name":"Logistics & transport","n":6,"SOE":6209.0,"Private":564.0,"FDI":0.0,"tot":6773.0},{"name":"Insurance","n":5,"SOE":1817.0,"Private":0.0,"FDI":4955.0,"tot":6772.0},{"name":"Tourism & hospitality","n":3,"SOE":1439.0,"Private":2333.0,"FDI":1100.0,"tot":4872.0},{"name":"Manufacturing & other industry","n":7,"SOE":0.0,"Private":2672.0,"FDI":1421.0,"tot":4093.0},{"name":"Water & utilities","n":3,"SOE":3604.0,"Private":397.0,"FDI":0.0,"tot":4001.0},{"name":"Textiles","n":1,"SOE":895.0,"Private":0.0,"FDI":0.0,"tot":895.0}],"comp":{"SOE":[60412.0,17575.0,68850.0,7586.0,4357.0],"Private":[81885.0,12381.0,73890.0,17512.0,107480.0],"FDI":[3337.0,0.0,5045.0,641.0,0.0]},"cum":[0.15039,0.24237,0.28512,0.31603,0.34332,0.3696,0.39391,0.4182,0.44145,0.46403,0.48571,0.5071,0.52822,0.54329,0.55704,0.57036,0.58345,0.59608,0.60866,0.62067,0.63216,0.64359,0.655,0.6661,0.67627,0.68638,0.69488,0.70282,0.70977,0.71664,0.72279,0.72863,0.73381,0.73852,0.74321,0.74756,0.7519,0.7561,0.76,0.76378,0.76751,0.77102,0.77447,0.77782,0.78115,0.78448,0.7878,0.79108,0.7943,0.79748,0.80051,0.80354,0.80658,0.80961,0.81259,0.81551,0.81843,0.82131,0.82414,0.82692,0.8297,0.83247,0.83524,0.838,0.84075,0.8435,0.84621,0.84892,0.8516,0.85426,0.85691,0.85954,0.86215,0.86476,0.86733,0.86989,0.87238,0.87485,0.87732,0.87975,0.88211,0.88446,0.88675,0.88904,0.89129,0.89344,0.89558,0.89766,0.89963,0.90159,0.90352,0.90544,0.90733,0.90917,0.91101,0.91284,0.91466,0.91644,0.91805,0.91966,0.92118,0.92269,0.92419,0.92568,0.92713,0.92858,0.92999,0.93139,0.9327,0.93401,0.9353,0.93654,0.9377,0.93885,0.93997,0.94109,0.9422,0.94331,0.94441,0.9455,0.94657,0.94761,0.94863,0.94965,0.95066,0.95167,0.95268,0.9537,0.95471,0.95572,0.95669,0.95767,0.95861,0.95955,0.96047,0.96139,0.9623,0.96321,0.96411,0.96502,0.9659,0.96679,0.96767,0.96856,0.96942,0.97023,0.97103,0.97182,0.9726,0.97337,0.97414,0.97492,0.97567,0.97642,0.97717,0.97787,0.97857,0.97927,0.97994,0.98061,0.98128,0.98191,0.98254,0.98315,0.98374,0.98431,0.98487,0.98542,0.98597,0.98651,0.98704,0.98758,0.98808,0.98857,0.98906,0.98955,0.99003,0.99051,0.99098,0.99145,0.99192,0.99238,0.99284,0.99329,0.99373,0.99417,0.99461,0.99504,0.99547,0.99589,0.99632,0.99675,0.99717,0.99759,0.998,0.99841,0.99881,0.99921,0.99961,1.0],"prev":{"SOE":433090.0,"Private":248990.0,"FDI":114742.0},"prevtot":796822.0,"land":111837.0},"s":{"raw":518060.0,"sub":92225.0,"net":425835.0,"nsub":31,"firms":[{"r":1,"n":"PetroVietnam","fn":"Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam","c":"PVN","s":"Oil & gas","g":"PetroVietnam","role":"Parent","ded":false,"t":90991.0,"d":[12585.0,8648.0,14599.0,1865.0,0]},{"r":2,"n":"Viettel","fn":"Tập đoàn Công nghiệp - Viễn thông Quân đội (Viettel)","c":"VIETTEL","s":"Technology & telecom","g":"Viettel","role":"Parent","ded":false,"t":42290.0,"d":[0,0,0,0,0]},{"r":3,"n":"Petrolimex","fn":"Tập đoàn Xăng dầu Việt Nam","c":"PLX","s":"Fuel distribution","g":"Petrolimex","role":"Parent","ded":false,"t":30575.0,"d":[3055.0,6397.0,727.0,320.0,0]},{"r":4,"n":"Vinacomin","fn":"Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam","c":"VINACOMIN","s":"Coal & minerals","g":"Vinacomin","role":"Parent","ded":false,"t":24031.0,"d":[3746.0,2281.0,1732.0,0,423.0]},{"r":5,"n":"Vinataba","fn":"Tổng Công ty Thuốc lá Việt Nam - Công ty TNHH MTV","c":"VINATABA","s":"Tobacco","g":"—","role":"Standalone","ded":false,"t":22335.0,"d":[3546.0,0,418.0,0,0]},{"r":6,"n":"EVN","fn":"Tập đoàn Điện lực Việt Nam - Công ty TNHH MTV","c":"EVN","s":"Power","g":"EVN","role":"Parent","ded":false,"t":20891.0,"d":[8367.0,0,1201.0,1163.0,0]},{"r":7,"n":"PVEP","fn":"Công ty TNHH - Tổng Công ty Thăm dò Khai thác Dầu khí","c":"PVEP","s":"Oil & gas","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":15105.0,"d":[0,0,6685.0,0,0]},{"r":8,"n":"BSR","fn":"Công ty Cổ phần - Tổng Công ty Lọc Hóa dầu Việt Nam","c":"BSR","s":"Oil & gas","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":14531.0,"d":[3499.0,4673.0,390.0,0,0]},{"r":9,"n":"Vietcombank","fn":"Ngân hàng Thương mại cổ phần Ngoại thương Việt Nam","c":"VCB","s":"Banking","g":"—","role":"Standalone","ded":false,"t":12494.0,"d":[835.0,0,9242.0,0,0]},{"r":10,"n":"BIDV","fn":"Ngân hàng Thương mại cổ phần Đầu tư và Phát triển Việt Nam","c":"BID","s":"Banking","g":"BIDV","role":"Parent","ded":false,"t":11374.0,"d":[1430.0,0,6768.0,0,0]},{"r":11,"n":"PV Oil","fn":"Tổng Công ty Dầu Việt Nam - CTCP","c":"OIL","s":"Fuel distribution","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":11115.0,"d":[1006.0,1328.0,124.0,0,0]},{"r":12,"n":"Viettel Global","fn":"Tổng Công ty cổ phần Đầu tư Quốc tế Viettel","c":"VGI","s":"Technology & telecom","g":"Viettel","role":"Subsidiary","ded":true,"t":10657.0,"d":[3781.0,0,3191.0,970.0,0]},{"r":13,"n":"Vietinbank","fn":"Ngân hàng Thương mại Cổ phần Công thương Việt Nam","c":"CTG","s":"Banking","g":"—","role":"Standalone","ded":false,"t":10057.0,"d":[998.0,0,7541.0,0,0]},{"r":14,"n":"MB","fn":"Ngân hàng Thương mại cổ phần Quân đội","c":"MBB","s":"Banking","g":"MB","role":"Parent","ded":false,"t":10004.0,"d":[1105.0,0,6518.0,0,0]},{"r":15,"n":"SCIC","fn":"Tổng Công ty Đầu tư và Kinh doanh vốn Nhà nước","c":"SCIC","s":"Finance & investment","g":"—","role":"Standalone","ded":false,"t":8404.0,"d":[0,0,384.0,0,0]},{"r":16,"n":"Agribank","fn":"Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam","c":"AGRIBANK","s":"Banking","g":"—","role":"Standalone","ded":false,"t":7854.0,"d":[763.0,0,5658.0,0,0]},{"r":17,"n":"PV Gas","fn":"Tổng Công ty Khí Việt Nam-CTCP","c":"GAS","s":"Oil & gas","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":7278.0,"d":[1934.0,2141.0,2403.0,0,0]},{"r":18,"n":"HFIC","fn":"Công ty Đầu tư Tài chính Nhà nước T.P Hồ Chí Minh","c":"HFIC","s":"Finance & investment","g":"HFIC","role":"Parent","ded":false,"t":6794.0,"d":[1441.0,0,683.0,500.0,339.0]},{"r":19,"n":"HCM City Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Thành phố Hồ Chí Minh","c":"XSHCM","s":"Lottery","g":"HFIC","role":"Subsidiary","ded":true,"t":6176.0,"d":[1378.0,0,498.0,490.0,0]},{"r":20,"n":"VNPT","fn":"Tập đoàn Bưu chính Viễn thông Việt Nam","c":"VNPT","s":"Technology & telecom","g":"—","role":"Standalone","ded":false,"t":6078.0,"d":[0,0,0,0,0]},{"r":21,"n":"EVN Genco1","fn":"Tổng Công ty Phát điện 1","c":"GENCO1","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":5422.0,"d":[3521.0,0,237.0,0,0]},{"r":22,"n":"ACV","fn":"Tổng công ty Cảng hàng không Việt Nam - CTCP","c":"ACV","s":"Aviation","g":"—","role":"Standalone","ded":false,"t":4656.0,"d":[211.0,0,2582.0,403.0,149.0]},{"r":23,"n":"Khatoco","fn":"Tổng Công ty Khánh Việt","c":"KHATOCO","s":"Tobacco","g":"—","role":"Standalone","ded":false,"t":4292.0,"d":[537.0,78.0,58.0,0,0]},{"r":24,"n":"Habeco","fn":"Tổng CTCP Bia - Rượu - Nước giải khát Hà Nội","c":"BHN","s":"Food & beverage","g":"—","role":"Standalone","ded":false,"t":4158.0,"d":[613.0,0,155.0,0,0]},{"r":25,"n":"FPT Telecom","fn":"Công ty Cổ phần Viễn thông FPT","c":"FOX","s":"Technology & telecom","g":"—","role":"Standalone","ded":false,"t":3945.0,"d":[2580.0,0,955.0,296.0,0]},{"r":26,"n":"CNS","fn":"Tổng Công ty Công nghiệp Sài Gòn - TNHH Một thành viên","c":"CNS","s":"Tobacco","g":"—","role":"Standalone","ded":false,"t":3691.0,"d":[421.0,77.0,107.0,19.0,0]},{"r":27,"n":"Vietnam Rubber Group","fn":"Tập đoàn Công nghiệp Cao su Việt Nam","c":"GVR","s":"Chemicals & rubber","g":"—","role":"Standalone","ded":false,"t":3413.0,"d":[858.0,0,1232.0,162.0,751.0]},{"r":28,"n":"Vietnam Airlines","fn":"Tổng Công ty Hàng không Việt Nam - CTCP","c":"HVN","s":"Aviation","g":"—","role":"Standalone","ded":false,"t":3291.0,"d":[969.0,0,416.0,874.0,0]},{"r":29,"n":"Vietnam Exchange","fn":"Sở Giao dịch Chứng khoán Việt Nam","c":"VNEX","s":"Finance & investment","g":"Vietnam Exchange","role":"Parent","ded":false,"t":3283.0,"d":[6.0,0,659.0,0,0]},{"r":30,"n":"Sawaco","fn":"Tổng Công ty Cấp nước Sài Gòn","c":"SAWACO","s":"Water","g":"—","role":"Standalone","ded":false,"t":3179.0,"d":[232.0,0,337.0,0,0]},{"r":31,"n":"Saigon New Port/SNP","fn":"Công ty TNHH MTV - Tổng Công ty Tân Cảng Sài Gòn","c":"SNP","s":"Transport & logistics","g":"—","role":"Standalone","ded":false,"t":3000.0,"d":[0,0,0,0,0]},{"r":32,"n":"VATM","fn":"Tổng Công ty Quản lý bay Việt Nam","c":"VATM","s":"Aviation","g":"—","role":"Standalone","ded":false,"t":2948.0,"d":[0,0,358.0,0,0]},{"r":33,"n":"Long An Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT LONG AN","c":"XSLA","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2797.0,"d":[0,0,0,0,0]},{"r":34,"n":"Bạc Liêu Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT BẠC LIÊU","c":"XSBL","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2751.0,"d":[640.0,0,207.0,0,0]},{"r":35,"n":"Bình Dương Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT BÌNH DƯƠNG","c":"XSBINHDUONG","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2749.0,"d":[630.0,0,212.0,0,0]},{"r":36,"n":"Bến Tre Lottery","fn":"Công ty TNHH MTV Xổ Số Kiến Thiết Bến Tre","c":"XSBENTRE","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2738.0,"d":[643.0,0,207.0,0,0]},{"r":37,"n":"Cà Mau Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Cà Mau","c":"XSCM","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2721.0,"d":[640.0,0,175.0,0,0]},{"r":38,"n":"Tây Ninh Lottery","fn":"Công ty TNHH Xổ số kiến thiết tỉnh Tây Ninh","c":"XSTN","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2718.0,"d":[643.0,0,195.0,243.0,0]},{"r":39,"n":"Đồng Tháp Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TỈNH ĐỒNG THÁP","c":"XSDT","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2682.0,"d":[646.0,0,190.0,0,0]},{"r":40,"n":"Kiên Giang Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT KIÊN GIANG","c":"XSKG","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2680.0,"d":[659.0,0,179.0,0,0]},{"r":41,"n":"Trà Vinh Lottery","fn":"Xổ số kiến thiết tỉnh Trà Vinh","c":"XSTV","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2648.0,"d":[658.0,0,170.0,0,0]},{"r":42,"n":"Bình Thuận Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Bình Thuận","c":"XSBINHTHUAN","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2635.0,"d":[642.0,0,168.0,0,0]},{"r":43,"n":"Vĩnh Long Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Vĩnh Long","c":"XSVL","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2615.0,"d":[644.0,0,210.0,0,0]},{"r":44,"n":"Satra","fn":"Tổng Công ty Thương mại Sài Gòn - TNHH MTV","c":"SATRA","s":"Retail & trade","g":"—","role":"Standalone","ded":false,"t":2602.0,"d":[0,0,51.0,0,0]},{"r":45,"n":"BRVT Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TỈNH BÀ RỊA - VŨNG TÀU","c":"XSBRVT","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2591.0,"d":[641.0,0,166.0,0,0]},{"r":46,"n":"Lâm Đồng Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Lâm Đồng","c":"XSLD","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2579.0,"d":[654.0,0,182.0,249.0,0]},{"r":47,"n":"An Giang Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT AN GIANG","c":"XSAG","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2543.0,"d":[642.0,0,157.0,240.0,0]},{"r":48,"n":"Tiền Giang Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TIỀN GIANG","c":"XSTG","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2529.0,"d":[650.0,0,140.0,244.0,0]},{"r":49,"n":"Đồng Nai Lottery","fn":"CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT VÀ DỊCH VỤ TỔNG HỢP ĐỒNG NAI","c":"XSDONGNAI","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2460.0,"d":[646.0,0,198.0,0,0]},{"r":50,"n":"Cần Thơ Lottery","fn":"CÔNG TY TNHH NHÀ NƯỚC MTV XỔ SỐ KIẾN THIẾT CẦN THƠ","c":"XSCT","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2452.0,"d":[646.0,0,185.0,0,0]},{"r":51,"n":"Necorp","fn":"Tổng Công ty Đông Bắc - BQP","c":"NECORP","s":"Coal & minerals","g":"—","role":"Standalone","ded":false,"t":2444.0,"d":[673.0,0,205.0,0,0]},{"r":52,"n":"Sóc Trăng Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Sóc Trăng","c":"XSST","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2321.0,"d":[0,0,0,0,0]},{"r":53,"n":"Vinachem","fn":"Tập đoàn Hoá chất Việt Nam","c":"VINACHEM","s":"Chemicals & rubber","g":"Vinachem","role":"Parent","ded":false,"t":2268.0,"d":[781.0,0,692.0,112.0,0]},{"r":54,"n":"Vietlott","fn":"Công ty TNHH MTV Xổ số điện toán Việt Nam","c":"VIETLOTT","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2265.0,"d":[791.0,0,84.0,263.0,0]},{"r":55,"n":"Hậu Giang Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết Hậu Giang","c":"XSHG","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":2115.0,"d":[598.0,0,111.0,0,0]},{"r":56,"n":"Vimico","fn":"Tổng Công ty Khoáng sản TKV - CTCP","c":"KSV","s":"Coal & minerals","g":"Vinacomin","role":"Subsidiary","ded":true,"t":1968.0,"d":[606.0,0,360.0,0,0]},{"r":57,"n":"HUD","fn":"Tổng Công ty Đầu tư Phát triển nhà và Đô thị-Công ty TNHH","c":"HUDX","s":"Real estate & construction","g":"—","role":"Standalone","ded":false,"t":1951.0,"d":[0,0,157.0,0,1296.0]},{"r":58,"n":"PTSC","fn":"Tổng Công ty Cổ phần Dịch vụ Kỹ thuật Dầu khí Việt Nam","c":"PVS","s":"Oil & gas","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":1921.0,"d":[319.0,0,620.0,400.0,0]},{"r":59,"n":"Bình Phước Lottery","fn":"Công ty TNHH MTV Xổ số kiến thiết và dịch vụ tổng hợp Bình Phước","c":"XSBP","s":"Lottery","g":"—","role":"Standalone","ded":false,"t":1910.0,"d":[496.0,0,117.0,0,0]},{"r":60,"n":"Petimex","fn":"Công ty TNHH MTV Thương mại Dầu khí Đồng Tháp","c":"PDT","s":"Fuel distribution","g":"—","role":"Standalone","ded":false,"t":1819.0,"d":[0,0,25.0,0,0]},{"r":61,"n":"BaoViet Holdings","fn":"Tập đoàn Bảo Việt","c":"BVH","s":"Insurance","g":"Bao Viet","role":"Parent","ded":false,"t":1817.0,"d":[475.0,0,535.0,755.0,0]},{"r":62,"n":"EVN Genco2","fn":"Tổng công ty Phát điện 2 - Công ty cổ phần","c":"GE2","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":1815.0,"d":[380.0,0,231.0,0,0]},{"r":63,"n":"Mobifone","fn":"Tổng Công ty Viễn thông Mobifone","c":"MOBIFONE","s":"Technology & telecom","g":"—","role":"Standalone","ded":false,"t":1500.0,"d":[0,0,0,0,0]},{"r":64,"n":"Saigontourist","fn":"Tổng Công ty Du lịch Sài Gòn - TNHH Một thành viên","c":"SAIGONTOURIST","s":"Tourism","g":"—","role":"Standalone","ded":false,"t":1439.0,"d":[281.0,0,78.0,31.0,742.0]},{"r":65,"n":"Dofico","fn":"Tổng Công ty Công nghiệp Thực phẩm Đồng Nai","c":"DOFICO","s":"Tobacco","g":"—","role":"Standalone","ded":false,"t":1402.0,"d":[200.0,0,28.0,0,0]},{"r":66,"n":"PV Power","fn":"Tổng Công ty Điện lực Dầu khí Việt Nam - CTCP","c":"POW","s":"Power","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":1174.0,"d":[377.0,0,121.0,0,0]},{"r":67,"n":"EVN Genco3","fn":"Tổng Công ty Phát điện 3 - Công ty cổ phần","c":"PGV","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":1118.0,"d":[335.0,0,2.0,98.0,0]},{"r":68,"n":"Vicem","fn":"Tổng Công ty Công nghiệp Xi măng Việt Nam","c":"VICEM","s":"Steel & building materials","g":"—","role":"Standalone","ded":false,"t":1110.0,"d":[386.0,0,54.0,0,0]},{"r":69,"n":"VIMC","fn":"Tổng Công ty Hàng hải Việt Nam - CTCP","c":"MVN","s":"Transport & logistics","g":"—","role":"Standalone","ded":false,"t":1107.0,"d":[395.0,0,387.0,143.0,0]},{"r":70,"n":"Viettel Post","fn":"Tổng Công ty cổ phần Bưu chính Viettel","c":"VTP","s":"Transport & logistics","g":"Viettel","role":"Subsidiary","ded":true,"t":1044.0,"d":[685.0,0,104.0,246.0,0]},{"r":71,"n":"PV Drilling","fn":"Tổng Công ty Cổ phần Khoan và Dịch vụ Khoan Dầu khí","c":"PVD","s":"Oil & gas","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":1033.0,"d":[120.0,0,201.0,360.0,0]},{"r":72,"n":"Viettel Construction","fn":"Tổng Công ty Cổ phần Công trình Viettel","c":"CTR","s":"Real estate & construction","g":"Viettel","role":"Subsidiary","ded":true,"t":995.0,"d":[537.0,0,142.0,225.0,0]},{"r":73,"n":"EVN NPC","fn":"Tổng Công ty Điện lực Miền Bắc","c":"EVNNPC","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":991.0,"d":[449.0,0,196.0,0,0]},{"r":74,"n":"Saigon Petro","fn":"Công ty TNHH MTV Dầu khí Thành phố Hồ Chí Minh","c":"SAIGONPETRO","s":"Fuel distribution","g":"—","role":"Standalone","ded":false,"t":965.0,"d":[0,0,0,0,0]},{"r":75,"n":"BaoViet Life","fn":"Tổng Công ty Bảo Việt Nhân thọ","c":"BVLIFE","s":"Insurance","g":"Bao Viet","role":"Subsidiary","ded":true,"t":946.0,"d":[0,0,410.0,0,0]},{"r":76,"n":"VNSteel","fn":"Tổng Công ty Thép Việt Nam - CTCP","c":"TVN","s":"Steel & building materials","g":"—","role":"Standalone","ded":false,"t":927.0,"d":[637.0,0,68.0,0,110.0]},{"r":77,"n":"Vinatex","fn":"Tập đoàn Dệt may Việt Nam","c":"VGT","s":"Textiles","g":"—","role":"Standalone","ded":false,"t":895.0,"d":[462.0,0,139.0,0,212.0]},{"r":78,"n":"Sonadezi","fn":"Tổng Công ty Cổ phần phát triển khu Công nghiệp","c":"SNZ","s":"Real estate & construction","g":"—","role":"Standalone","ded":false,"t":876.0,"d":[175.0,0,436.0,0,0]},{"r":79,"n":"LDA","fn":"Công ty TNHH Nhôm Lâm Đồng - Vinacomin","c":"LDAV","s":"Coal & minerals","g":"Vinacomin","role":"Subsidiary","ded":true,"t":858.0,"d":[0,0,0,0,0]},{"r":80,"n":"Vietnam Railways","fn":"Công ty TNHH Một thành viên - Tập đoàn Đường sắt Quốc gia Việt Nam","c":"VNRAILWAYS","s":"Transport & logistics","g":"—","role":"Standalone","ded":false,"t":852.0,"d":[403.0,0,25.0,0,0]},{"r":81,"n":"MBS","fn":"Công ty cổ phần Chứng khoán MB","c":"MBS","s":"Securities","g":"MB","role":"Subsidiary","ded":true,"t":834.0,"d":[4.0,0,219.0,598.0,0]},{"r":82,"n":"PLC","fn":"Tổng Công ty Hóa dầu Petrolimex-CTCP","c":"PLC","s":"Chemicals & rubber","g":"Petrolimex","role":"Subsidiary","ded":true,"t":819.0,"d":[176.0,547.0,24.0,0,0]},{"r":83,"n":"VNPost","fn":"TỔNG CÔNG TY BƯU ĐIỆN VIỆT NAM","c":"VNPOST","s":"Transport & logistics","g":"—","role":"Standalone","ded":false,"t":789.0,"d":[434.0,0,117.0,0,0]},{"r":84,"n":"EVN CPC","fn":"Tổng Công ty Điện lực miền Trung","c":"EVNCPC","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":776.0,"d":[533.0,0,51.0,0,0]},{"r":85,"n":"Becamex IDC","fn":"Tập đoàn Đầu tư và Phát triển công nghiệp Becamex - CTCP","c":"BCM","s":"Real estate & construction","g":"—","role":"Standalone","ded":false,"t":773.0,"d":[320.0,0,342.0,0,0]},{"r":86,"n":"Đạm Cà Mau","fn":"CTCP - Tổng Công ty Phân bón Dầu khí Cà Mau","c":"DCM","s":"Chemicals & rubber","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":746.0,"d":[0,129.0,223.0,0,0]},{"r":87,"n":"EVN SPC","fn":"Tổng Công ty Điện lực Miền Nam","c":"EVNSPC","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":713.0,"d":[0,0,28.0,0,0]},{"r":88,"n":"Sông Đà Corp","fn":"Tổng Công ty Sông Đà - Công ty cổ phần","c":"SJG","s":"Real estate & construction","g":"—","role":"Standalone","ded":false,"t":624.0,"d":[182.0,0,119.0,0,0]},{"r":89,"n":"VSDC","fn":"Tổng Công ty lưu ký và bù trừ Chứng khoán Việt Nam","c":"VSDC","s":"Finance & investment","g":"—","role":"Standalone","ded":false,"t":602.0,"d":[0,0,122.0,0,0]},{"r":90,"n":"VVMI","fn":"Tổng công ty Công nghiệp mỏ Việt Bắc TKV - CTCP","c":"MVB","s":"Coal & minerals","g":"Vinacomin","role":"Subsidiary","ded":true,"t":592.0,"d":[150.0,0,82.0,13.0,0]},{"r":91,"n":"PV Trans","fn":"Tổng công ty Cổ phần Vận tải Dầu khí","c":"PVT","s":"Transport & logistics","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":565.0,"d":[0,0,368.0,0,0]},{"r":92,"n":"Đạm Phú Mỹ","fn":"Tổng Công ty Phân bón và Hóa chất Dầu khí-CTCP","c":"DPM","s":"Chemicals & rubber","g":"PetroVietnam","role":"Subsidiary","ded":true,"t":553.0,"d":[0,0,283.0,116.0,0]},{"r":93,"n":"Handico","fn":"Tổng Công ty Đầu tư và phát triển Nhà Hà Nội","c":"HANDICO","s":"Real estate & construction","g":"—","role":"Standalone","ded":false,"t":543.0,"d":[0,0,11.0,0,335.0]},{"r":94,"n":"Yến Sào Khánh Hòa","fn":"Công ty TNHH Nhà nước MTV Yến sào Khánh Hòa","c":"YSKH","s":"Food & beverage","g":"—","role":"Standalone","ded":false,"t":535.0,"d":[160.0,0,100.0,0,0]},{"r":95,"n":"HOSE","fn":"Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh","c":"HOSE","s":"Finance & investment","g":"Vietnam Exchange","role":"Subsidiary","ded":true,"t":531.0,"d":[0,0,0,0,0]},{"r":96,"n":"BIDV Insurance","fn":"Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và phát triển Việt Nam","c":"BIC","s":"Insurance","g":"BIDV","role":"Subsidiary","ded":true,"t":513.0,"d":[216.0,0,166.0,0,0]},{"r":97,"n":"Apatit Vietnam","fn":"Công ty TNHH MTV Apatit Việt Nam","c":"APATIT","s":"Chemicals & rubber","g":"Vinachem","role":"Subsidiary","ded":true,"t":496.0,"d":[0,0,0,0,0]},{"r":98,"n":"EVN Hanoi","fn":"Tổng Công ty Điện lực Thành phố Hà Nội","c":"EVNHANOI","s":"Power","g":"EVN","role":"Subsidiary","ded":true,"t":470.0,"d":[150.0,0,154.0,71.0,0]},{"r":99,"n":"Petrolimex Aviation","fn":"Công ty cổ phần Nhiên liệu bay Petrolimex","c":"PLXAVI","s":"Fuel distribution","g":"Petrolimex","role":"Subsidiary","ded":true,"t":470.0,"d":[0,0,0,0,0]},{"r":100,"n":"SAMCO","fn":"Tổng Công ty Cơ khí Giao thông Vận tải Sài Gòn - TNHH MTV","c":"SAMCO","s":"Automotive","g":"—","role":"Standalone","ded":false,"t":468.0,"d":[0,0,69.0,0,0]}],"sectors":[{"name":"Oil & gas","tot":90991.0,"n":6,"nc":1},{"name":"Technology & telecom","tot":53813.0,"n":5,"nc":4},{"name":"Lottery","tot":53499.0,"n":22,"nc":21},{"name":"Banking","tot":51783.0,"n":5,"nc":5},{"name":"Fuel distribution","tot":33359.0,"n":5,"nc":3},{"name":"Tobacco","tot":31720.0,"n":4,"nc":4},{"name":"Coal & minerals","tot":26475.0,"n":5,"nc":2},{"name":"Power","tot":20891.0,"n":9,"nc":1},{"name":"Finance & investment","tot":19083.0,"n":5,"nc":4},{"name":"Aviation","tot":10895.0,"n":3,"nc":3},{"name":"Transport & logistics","tot":5748.0,"n":6,"nc":4},{"name":"Chemicals & rubber","tot":5681.0,"n":6,"nc":2},{"name":"Real estate & construction","tot":4767.0,"n":6,"nc":5},{"name":"Food & beverage","tot":4693.0,"n":2,"nc":2},{"name":"Water","tot":3179.0,"n":1,"nc":1},{"name":"Retail & trade","tot":2602.0,"n":1,"nc":1},{"name":"Steel & building materials","tot":2037.0,"n":2,"nc":2},{"name":"Insurance","tot":1817.0,"n":3,"nc":1},{"name":"Tourism","tot":1439.0,"n":1,"nc":1},{"name":"Textiles","tot":895.0,"n":1,"nc":1},{"name":"Automotive","tot":468.0,"n":1,"nc":1}],"groups":[{"name":"PetroVietnam","n":11,"parent":90991.0,"sub":54021.0,"pn":"PetroVietnam","kids":[{"n":"PVEP","t":15105.0},{"n":"BSR","t":14531.0},{"n":"PV Oil","t":11115.0},{"n":"PV Gas","t":7278.0},{"n":"PTSC","t":1921.0},{"n":"PV Power","t":1174.0},{"n":"PV Drilling","t":1033.0},{"n":"Đạm Cà Mau","t":746.0},{"n":"PV Trans","t":565.0},{"n":"Đạm Phú Mỹ","t":553.0}]},{"name":"Viettel","n":4,"parent":42290.0,"sub":12696.0,"pn":"Viettel","kids":[{"n":"Viettel Global","t":10657.0},{"n":"Viettel Post","t":1044.0},{"n":"Viettel Construction","t":995.0}]},{"name":"Petrolimex","n":3,"parent":30575.0,"sub":1289.0,"pn":"Petrolimex","kids":[{"n":"PLC","t":819.0},{"n":"Petrolimex Aviation","t":470.0}]},{"name":"Vinacomin","n":4,"parent":24031.0,"sub":3418.0,"pn":"Vinacomin","kids":[{"n":"Vimico","t":1968.0},{"n":"LDA","t":858.0},{"n":"VVMI","t":592.0}]},{"name":"EVN","n":8,"parent":20891.0,"sub":11305.0,"pn":"EVN","kids":[{"n":"EVN Genco1","t":5422.0},{"n":"EVN Genco2","t":1815.0},{"n":"EVN Genco3","t":1118.0},{"n":"EVN NPC","t":991.0},{"n":"EVN CPC","t":776.0},{"n":"EVN SPC","t":713.0},{"n":"EVN Hanoi","t":470.0}]},{"name":"BIDV","n":2,"parent":11374.0,"sub":513.0,"pn":"BIDV","kids":[{"n":"BIDV Insurance","t":513.0}]},{"name":"MB","n":2,"parent":10004.0,"sub":834.0,"pn":"MB","kids":[{"n":"MBS","t":834.0}]},{"name":"HFIC","n":2,"parent":6794.0,"sub":6176.0,"pn":"HFIC","kids":[{"n":"HCM City Lottery","t":6176.0}]},{"name":"Vietnam Exchange","n":2,"parent":3283.0,"sub":531.0,"pn":"Vietnam Exchange","kids":[{"n":"HOSE","t":531.0}]},{"name":"Vinachem","n":2,"parent":2268.0,"sub":496.0,"pn":"Vinachem","kids":[{"n":"Apatit Vietnam","t":496.0}]},{"name":"Bao Viet","n":2,"parent":1817.0,"sub":946.0,"pn":"BaoViet Holdings","kids":[{"n":"BaoViet Life","t":946.0}]}],"over1k":71,"last":468.0,"ungrouped_n":58,"ungrouped_v":181517.0}}</script>
+<script>
+(function(){
+"use strict";
+var D=JSON.parse(document.getElementById('payload').textContent);
+var V=D.v,S=D.s,NAT=D.national;
+var HEX={SOE:'#A8322E',Private:'#16646E',FDI:'#C08A2E'};
+var LBL={SOE:'State-owned',Private:'Domestic private',FDI:'Foreign-invested'};
+var ORDER=['SOE','Private','FDI'];
+var MIX=[['Corporate income tax','#16242C',2],['VAT, domestic','#16646E',0],
+         ['VAT on imports','#4E8F94',1],['Land and land rent','#A8322E',4],
+         ['Personal income tax withheld','#C08A2E',3]];
+
+function bn(x){return x.toLocaleString('en-US',{maximumFractionDigits:0});}
+function tn(x){return (x/1000).toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1});}
+function pc(x,d){return (x*100).toFixed(d===undefined?1:d)+'%';}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function esc(s){return String(s).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
+
+/* ---------- tooltip ---------- */
+var tip=document.getElementById('tip'),tipOn=false;
+function show(html,ev){
+  tip.innerHTML=html;tip.classList.add('on');tipOn=true;move(ev);
+}
+function move(ev){
+  if(!tipOn||!ev)return;
+  var r=tip.getBoundingClientRect(),x=ev.clientX+16,y=ev.clientY+16;
+  if(x+r.width>window.innerWidth-10)x=ev.clientX-r.width-16;
+  if(y+r.height>window.innerHeight-10)y=ev.clientY-r.height-16;
+  tip.style.left=Math.max(8,x)+'px';tip.style.top=Math.max(8,y)+'px';
+}
+function hide(){tip.classList.remove('on');tipOn=false;}
+document.addEventListener('mousemove',move,{passive:true});
+window.addEventListener('scroll',hide,{passive:true});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+
+function firmTip(f,tot,extra){
+  var h='<span class="tt">'+esc(f.fn||f.n)+'</span>';
+  if(f.c)h+='<span class="tm">'+esc(f.c)+(f.s?' &middot; '+esc(f.s):'')+'</span>';
+  h+='<span class="tv">&#8363;'+bn(f.t)+' bn</span>';
+  h+='<span class="tm">'+pc(f.t/tot,2)+' of the list &middot; rank '+f.r+'</span>';
+  if(f.o)h+='<hr><div class="tr"><span>Ownership</span><span style="color:'+HEX[f.o]+'">'+LBL[f.o]+'</span></div>';
+  if(extra)h+=extra;
+  var d=f.d,sum=d?d.reduce(function(a,b){return a+b;},0):0;
+  if(sum>0){
+    h+='<hr>';
+    MIX.forEach(function(m){ if(d[m[2]]>0) h+='<div class="tr"><span>'+m[0]+'</span><span>'+bn(d[m[2]])+'</span></div>'; });
+  }
+  return h;
+}
+
+/* ---------- hero grid ---------- */
+(function(){
+  var COLS=25,SQ=26,GAP=5,n=V.firms.length,rows=Math.ceil(n/COLS);
+  var W=COLS*SQ+(COLS-1)*GAP,H=rows*SQ+(rows-1)*GAP;
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Two hundred squares, one per enterprise, coloured by ownership">';
+  V.firms.forEach(function(f,i){
+    svg+='<rect data-i="'+i+'" data-own="'+f.o+'" x="'+(i%COLS)*(SQ+GAP)+'" y="'+Math.floor(i/COLS)*(SQ+GAP)+
+         '" width="'+SQ+'" height="'+SQ+'" rx="2" fill="'+HEX[f.o]+'"/>';
+  });
+  document.getElementById('grid').innerHTML=svg+'</svg>';
+  var wrapEl=document.getElementById('gridwrap');
+  wrapEl.addEventListener('mouseover',function(e){
+    var r=e.target.closest('rect');if(!r)return;
+    show(firmTip(V.firms[+r.dataset.i],V.total),e);
+  });
+  wrapEl.addEventListener('mouseout',function(e){if(e.target.closest('rect'))hide();});
+  document.querySelectorAll('.chip').forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')==='true';
+      document.querySelectorAll('.chip').forEach(function(o){o.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed',on?'false':'true');
+      var own=on?null:b.dataset.own;
+      wrapEl.classList.toggle('dim',!!own);
+      document.querySelectorAll('#grid rect').forEach(function(r){
+        r.classList.toggle('on',!!own&&r.dataset.own===own);
+      });
+    });
+  });
+})();
+
+/* ---------- headline text ---------- */
+document.getElementById('h-tot').textContent='\u20ab'+tn(V.total)+' trillion';
+document.getElementById('h-soe').textContent=pc(V.own.SOE.v/V.total);
+
+/* ---------- divergence bars ---------- */
+function stack(id,get,label){
+  var box=document.getElementById(id),tot=0;
+  ORDER.forEach(function(k){tot+=get(k);});
+  ORDER.forEach(function(k){
+    var val=get(k),sh=val/tot;
+    var d=el('div','seg');
+    d.style.width=(sh*100)+'%';d.style.background=HEX[k];
+    if(sh>0.075)d.textContent=Math.round(sh*100)+'%';
+    d.addEventListener('mouseenter',function(e){
+      show('<span class="tt">'+LBL[k]+'</span><span class="tv">'+label(val)+'</span>'+
+           '<span class="tm">'+pc(sh)+' of the total</span>',e);
+    });
+    d.addEventListener('mouseleave',hide);
+    box.appendChild(d);
+  });
+}
+stack('bar-firms',function(k){return V.own[k].n;},function(v){return v+' firms';});
+stack('bar-dong',function(k){return V.own[k].v;},function(v){return '\u20ab'+bn(v)+' bn';});
+stack('bar-24',function(k){return V.prev[k];},function(v){return '\u20ab'+bn(v)+' bn';});
+stack('bar-25',function(k){return V.own[k].v;},function(v){return '\u20ab'+bn(v)+' bn';});
+document.getElementById('yoy-l24').textContent='\u20ab'+tn(V.prevtot)+'tn';
+document.getElementById('yoy-l25').textContent='\u20ab'+tn(V.total)+'tn';
+var vic=V.firms[0];
+document.getElementById('yoy-txt').textContent=
+ 'The list grew '+pc(V.total/V.prevtot-1,0)+' in a year, and the state share fell from '+
+ pc(V.prev.SOE/V.prevtot)+' to '+pc(V.own.SOE.v/V.total)+
+ '. State remittance itself rose; it simply grew far more slowly than the private side, which was up '+
+ pc(V.own.Private.v/V.prev.Private-1,0)+'. Almost the entire swing is one firm. '+vic.n+' went from \u20ab56,163 bn to \u20ab'+
+ bn(vic.t)+' bn, of which \u20ab'+bn(vic.d[4])+' bn is land and land rent \u2014 a single year of land obligations worth '+
+ pc(vic.d[4]/V.total)+' of the entire list.';
+
+var avgS=V.own.SOE.v/V.own.SOE.n,avgP=V.own.Private.v/V.own.Private.n;
+document.getElementById('gap-txt').innerHTML=
+ 'State-owned enterprises are '+pc(V.own.SOE.n/200)+' of the firms but '+pc(V.own.SOE.v/V.total)+
+ ' of the payments. The average state firm on this list remits about '+(avgS/avgP).toFixed(1)+
+ ' times what the average private one does. The state still holds the concessions and licences attached to oil, coal, tobacco, telecoms and the provincial lotteries, but that advantage has narrowed sharply in a year.';
+
+/* ---------- national strip ---------- */
+(function(){
+  var items=[
+    ['\u20ab'+tn(V.total)+'tn','Remitted by the top 200, financial year 2025',''],
+    [pc(V.total/NAT),'of all state budget revenue, from 200 firms',''],
+    [pc(V.own.SOE.v/NAT),'of all state budget revenue, from '+V.own.SOE.n+' state enterprises','s'],
+    ['\u20ab'+tn(NAT)+'tn','Total state budget revenue, 2025','']
+  ];
+  var box=document.getElementById('strip-nat');
+  items.forEach(function(i){box.appendChild(el('div','stat '+i[2],'<b>'+i[0]+'</b><span>'+i[1]+'</span>'));});
+})();
+
+/* ---------- concentration curve ---------- */
+(function(){
+  var PW=640,PH=340,cum=V.cum,N=cum.length;
+  function X(i){return i/N*PW;} function Y(p){return PH-p*PH;}
+  var s='<svg viewBox="-56 -36 716 434" width="100%" class="curve" role="img" aria-label="Cumulative share of the list total against firm rank">';
+  [0,.25,.5,.75,1].forEach(function(p){
+    s+='<line x1="0" y1="'+Y(p)+'" x2="'+PW+'" y2="'+Y(p)+'" class="gl"/>'+
+       '<text x="-10" y="'+(Y(p)+4)+'" class="ax" text-anchor="end">'+(p*100)+'%</text>';
+  });
+  [25,50,100,150,200].forEach(function(k){
+    s+='<text x="'+X(k)+'" y="'+(PH+22)+'" class="ax" text-anchor="middle">'+k+'</text>';
+  });
+  var pts=cum.map(function(c,i){return X(i+1).toFixed(1)+','+Y(c).toFixed(1);}).join(' ');
+  s+='<polyline points="'+pts+'" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>';
+  s+='<line x1="'+X(25)+'" y1="'+Y(cum[24])+'" x2="'+X(25)+'" y2="'+PH+'" class="mark"/>';
+  s+='<circle cx="'+X(25)+'" cy="'+Y(cum[24])+'" r="5" fill="var(--soe)"/>';
+  s+='<text x="'+(X(25)+14)+'" y="'+(Y(cum[24])+5)+'" class="anno">25 firms carry '+Math.round(cum[24]*100)+'% of the list</text>';
+  s+='<text x="-46" y="-20" class="ax">Cumulative share of the list total</text>';
+  s+='<text x="'+PW+'" y="'+(PH+50)+'" class="ax" text-anchor="end">Firms, ranked by size of payment</text>';
+  s+='<circle id="cdot" cx="0" cy="0" r="4" fill="var(--soe)" style="display:none"/>';
+  s+='<rect x="0" y="0" width="'+PW+'" height="'+PH+'" fill="transparent" id="chit"/></svg>';
+  var host=document.getElementById('curve');host.innerHTML=s;
+  var hit=host.querySelector('#chit'),dot=host.querySelector('#cdot'),svg=host.querySelector('svg');
+  hit.addEventListener('mousemove',function(e){
+    var b=svg.getBoundingClientRect();
+    var vx=(e.clientX-b.left)/b.width*716-56;
+    var i=Math.max(1,Math.min(N,Math.round(vx/PW*N)));
+    var f=V.firms[i-1];
+    dot.setAttribute('cx',X(i));dot.setAttribute('cy',Y(cum[i-1]));dot.style.display='';
+    show('<span class="tt">Top '+i+' firms</span><span class="tv">'+pc(cum[i-1])+'</span>'+
+         '<span class="tm">of the list total, \u20ab'+bn(cum[i-1]*V.total)+' bn</span><hr>'+
+         '<div class="tr"><span>Firm at rank '+i+'</span><span>'+esc(f.n)+'</span></div>'+
+         '<div class="tr"><span>Its payment</span><span>\u20ab'+bn(f.t)+' bn</span></div>',e);
+  });
+  hit.addEventListener('mouseleave',function(){hide();dot.style.display='none';});
+  document.getElementById('conc-txt').textContent=
+    'PetroVietnam alone accounts for '+pc(V.firms[0].t/V.total)+' of the entire list. The curve is steep at the left and almost flat by rank 120, where firms are clustered a few hundred billion dong apart. Move along it to read any point.';
+})();
+
+/* ---------- top 20 ---------- */
+(function(){
+  var box=document.getElementById('top20'),top=V.firms.slice(0,20),mx=top[0].t;
+  top.forEach(function(f){
+    var li=el('li');
+    li.innerHTML='<span class="tn">'+esc(f.n)+'</span><span class="tb"><i style="width:'+
+      (100*f.t/mx).toFixed(2)+'%;background:'+HEX[f.o]+'"></i></span><span class="tv">'+tn(f.t)+'</span>';
+    li.addEventListener('mouseenter',function(e){show(firmTip(f,V.total),e);});
+    li.addEventListener('mouseleave',hide);
+    box.appendChild(li);
+  });
+})();
+
+/* ---------- sector rows (VNTAX 200) ---------- */
+(function(){
+  var box=document.getElementById('sec-rows');
+  var use=V.sectors.filter(function(s){return s.tot/V.total>=0.004;});
+  var mx=Math.max.apply(null,use.map(function(s){return s.tot;}));
+  use.forEach(function(s){
+    var row=el('div','secrow');
+    var scale=s.tot/mx*100;
+    var bar=el('div','secbar');
+    ORDER.forEach(function(k){
+      if(!s[k])return;
+      var seg=el('div','seg');
+      seg.style.width=(s[k]/s.tot*scale)+'%';seg.style.background=HEX[k];
+      seg.addEventListener('mouseenter',function(e){
+        show('<span class="tt">'+esc(s.name)+'</span><span class="tm">'+LBL[k]+'</span>'+
+             '<span class="tv">\u20ab'+bn(s[k])+' bn</span>'+
+             '<span class="tm">'+pc(s[k]/s.tot)+' of the sector &middot; '+pc(s[k]/V.total)+' of the list</span><hr>'+
+             ORDER.filter(function(o){return s[o];}).map(function(o){
+               return '<div class="tr"><span style="color:'+HEX[o]+'">'+LBL[o]+'</span><span>'+bn(s[o])+'</span></div>';
+             }).join('')+
+             '<div class="tr"><span>Sector total</span><span>'+bn(s.tot)+'</span></div>',e);
+      });
+      seg.addEventListener('mouseleave',hide);
+      bar.appendChild(seg);
+    });
+    row.appendChild(el('div','secname',esc(s.name)+'<span class="secn">'+s.n+' firms</span>'));
+    row.appendChild(bar);
+    row.appendChild(el('div','secval',tn(s.tot)));
+    var soe=s.SOE/s.tot;
+    var d=el('div','secsoe',Math.round(soe*100)+'%');
+    d.style.color=soe>0.5?'var(--soe)':'var(--mute)';
+    row.appendChild(d);
+    box.appendChild(row);
+  });
+})();
+
+/* ---------- STATE 100 strip ---------- */
+(function(){
+  var items=[
+    ['\u20ab'+tn(S.net)+'tn','Contributed by the STATE 100, after netting out subsidiaries','s'],
+    [pc(S.net/NAT,0),'of all state budget revenue',''],
+    [S.over1k,'of the hundred remitted more than \u20ab1,000 bn',''],
+    ['\u20ab'+bn(S.last)+' bn','Payment of the enterprise ranked 100th','']
+  ];
+  var box=document.getElementById('strip-state');
+  items.forEach(function(i){box.appendChild(el('div','stat '+i[2],'<b>'+i[0]+'</b><span>'+i[1]+'</span>'));});
+})();
+
+/* ---------- waterfall ---------- */
+(function(){
+  var box=document.getElementById('waterfall'),mx=S.raw;
+  var steps=[
+    ['Sum of all 100 ranked rows',S.raw,'#16646E','Adding every row as published, including subsidiaries ranked in their own right.'],
+    ['Less '+S.nsub+' subsidiary entries',S.sub,'#D98E6A','These payments are already inside their parent\u2019s figure, so they are removed once.'],
+    ['STATE 100 contribution',S.net,'#A8322E','What the state sector actually put into the budget, on the publisher\u2019s basis.']
+  ];
+  steps.forEach(function(st){
+    var r=el('div','wf');
+    r.appendChild(el('div','lb',esc(st[0])));
+    var tr=el('div','tr'),i=el('i');
+    i.style.width=(st[1]/mx*100)+'%';i.style.background=st[2];
+    tr.appendChild(i);
+    tr.addEventListener('mouseenter',function(e){
+      show('<span class="tt">'+esc(st[0])+'</span><span class="tv">\u20ab'+bn(st[1])+' bn</span>'+
+           '<span class="tm">'+esc(st[3])+'</span>',e);
+    });
+    tr.addEventListener('mouseleave',hide);
+    r.appendChild(tr);
+    r.appendChild(el('div','vv',(st[1]===S.sub?'\u2212':'')+bn(st[1])));
+    box.appendChild(r);
+  });
+})();
+
+/* ---------- STATE 100 sectors ---------- */
+(function(){
+  var box=document.getElementById('state-sec');
+  var mx=S.sectors[0].tot;
+  S.sectors.forEach(function(s){
+    if(s.tot/S.net<0.002)return;
+    var row=el('div','secrow');row.style.borderBottomColor='#22333B';
+    var bar=el('div','secbar'),seg=el('div','seg');
+    seg.style.width=(s.tot/mx*100)+'%';seg.style.background='#A8322E';
+    seg.addEventListener('mouseenter',function(e){
+      show('<span class="tt">'+esc(s.name)+'</span><span class="tv">\u20ab'+bn(s.tot)+' bn</span>'+
+           '<span class="tm">'+pc(s.tot/S.net)+' of the state sector total</span><hr>'+
+           '<div class="tr"><span>Entries in the list</span><span>'+s.n+'</span></div>'+
+           '<div class="tr"><span>Counted, after netting</span><span>'+s.nc+'</span></div>',e);
+    });
+    seg.addEventListener('mouseleave',hide);
+    bar.appendChild(seg);
+    var nm=el('div','secname',esc(s.name)+'<span class="secn">'+s.n+(s.n===1?' entry':' entries')+'</span>');
+    nm.style.color='#EDEFE9';
+    row.appendChild(nm);row.appendChild(bar);
+    var v=el('div','secval',tn(s.tot));v.style.color='#EDEFE9';
+    row.appendChild(v);
+    row.appendChild(el('div','secsoe',pc(s.tot/S.net,0)));
+    box.appendChild(row);
+  });
+})();
+
+/* ---------- groups ---------- */
+(function(){
+  var box=document.getElementById('groups-grid');
+  S.groups.forEach(function(g){
+    var b=el('button','gcard');
+    b.type='button';b.setAttribute('aria-expanded','false');
+    var tot=g.parent+g.sub;
+    var kids=g.kids.map(function(k){
+      return '<div><span>'+esc(k.n)+'</span><b>'+bn(k.t)+'</b></div>';
+    }).join('');
+    b.innerHTML='<span class="gn">'+esc(g.name)+'</span>'+
+      '<span class="gv">\u20ab'+bn(g.parent)+' bn</span>'+
+      '<span class="gm">'+g.n+' entries ranked &middot; '+pc(g.parent/S.net)+' of the state sector</span>'+
+      '<span class="gbar"><i style="width:'+(100*g.parent/tot)+'%;background:#16646E"></i>'+
+      '<i style="width:'+(100*g.sub/tot)+'%;background:#D98E6A"></i></span>'+
+      '<div class="kids">'+(kids||'<div><span>No separately ranked subsidiaries</span></div>')+'</div>';
+    b.addEventListener('click',function(){
+      b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');
+    });
+    b.addEventListener('mouseenter',function(e){
+      show('<span class="tt">'+esc(g.name)+'</span>'+
+           '<span class="tm">'+esc(g.pn)+' and '+g.kids.length+' ranked subsidiar'+(g.kids.length===1?'y':'ies')+'</span>'+
+           '<span class="tv">\u20ab'+bn(g.parent)+' bn</span>'+
+           '<span class="tm">counted contribution, '+pc(g.parent/S.net)+' of the state sector</span><hr>'+
+           '<div class="tr"><span>Subsidiaries ranked (memo)</span><span>'+bn(g.sub)+'</span></div>'+
+           '<div class="tr"><span>Slots occupied</span><span>'+g.n+' of 100</span></div>',e);
+    });
+    b.addEventListener('mouseleave',hide);
+    box.appendChild(b);
+  });
+  var gp=S.groups.reduce(function(a,g){return a+g.parent;},0);
+  var gn=S.groups.reduce(function(a,g){return a+g.n;},0);
+  document.getElementById('grp-note').textContent=
+    'The eleven groups take '+gn+' of the hundred slots and \u20ab'+bn(gp)+
+    ' bn of counted contribution. The remaining '+S.ungrouped_n+' entries are single-entity state enterprises contributing \u20ab'+
+    bn(S.ungrouped_v)+' bn, most of them provincial lottery companies and utilities.';
+})();
+
+/* ---------- table ---------- */
+(function(){
+  var rows=S.firms.map(function(f){
+    var o=Object.assign({},f);o.cit=f.d[2]||0;return o;
+  });
+  var q=document.getElementById('q'),fs=document.getElementById('f-sec'),
+      fg=document.getElementById('f-grp'),fr=document.getElementById('f-role'),
+      tb=document.getElementById('tbody'),cnt=document.getElementById('tcount');
+  var uniq=function(a){return a.filter(function(v,i,s){return s.indexOf(v)===i;}).sort();};
+  uniq(rows.map(function(r){return r.s;})).forEach(function(v){
+    fs.appendChild(el('option',null,esc(v))).value=v;});
+  uniq(rows.map(function(r){return r.g;}).filter(function(v){return v!=='\u2014';})).forEach(function(v){
+    fg.appendChild(el('option',null,esc(v))).value=v;});
+  var sortK='t',sortD='desc';
+  function render(){
+    var term=q.value.trim().toLowerCase();
+    var out=rows.filter(function(r){
+      if(fs.value&&r.s!==fs.value)return false;
+      if(fg.value&&r.g!==fg.value)return false;
+      if(fr.value&&r.role!==fr.value)return false;
+      if(term&&!((r.fn+' '+r.n+' '+r.c).toLowerCase().indexOf(term)>=0))return false;
+      return true;
+    });
+    out.sort(function(a,b){
+      var x=a[sortK],y=b[sortK],c;
+      if(typeof x==='number'&&typeof y==='number')c=x-y;else c=String(x).localeCompare(String(y));
+      return sortD==='asc'?c:-c;
+    });
+    tb.innerHTML='';
+    out.forEach(function(r){
+      var tr=el('tr');
+      tr.innerHTML='<td class="num">'+r.r+'</td>'+
+        '<td><span class="nm">'+esc(r.n)+'</span><br><span class="cd">'+esc(r.c)+'</span></td>'+
+        '<td class="hide-s">'+esc(r.s)+'</td>'+
+        '<td class="hide-s">'+(r.g==='\u2014'?'<span style="color:#6E8288">\u2014</span>':esc(r.g))+'</td>'+
+        '<td class="hide-s"><span class="tag '+r.role+'">'+r.role+'</span></td>'+
+        '<td class="num'+(r.ded?' netted':'')+'">'+bn(r.t)+'</td>'+
+        '<td class="num hide-s">'+(r.cit?bn(r.cit):'<span style="color:#5E7178">\u2014</span>')+'</td>';
+      tr.addEventListener('mouseenter',function(e){
+        var extra='<div class="tr"><span>Group</span><span>'+(r.g==='\u2014'?'None':esc(r.g))+'</span></div>'+
+          '<div class="tr"><span>Role</span><span>'+r.role+'</span></div>'+
+          (r.ded?'<div class="tr"><span>In group total</span><span style="color:#E8A77F">netted out</span></div>'
+                :'<div class="tr"><span>In group total</span><span>counted</span></div>');
+        show(firmTip(r,S.net,extra),e);
+      });
+      tr.addEventListener('mouseleave',hide);
+      tb.appendChild(tr);
+    });
+    var counted=out.filter(function(r){return !r.ded;});
+    var sum=counted.reduce(function(a,r){return a+r.t;},0);
+    cnt.textContent=out.length+' of 100 shown \u00b7 \u20ab'+bn(sum)+' bn counted';
+  }
+  [q,fs,fg,fr].forEach(function(c){c.addEventListener('input',render);});
+  document.querySelectorAll('.tbl th').forEach(function(th){
+    th.addEventListener('click',function(){
+      var k=th.dataset.k;
+      if(sortK===k){sortD=sortD==='asc'?'desc':'asc';}
+      else{sortK=k;sortD=(k==='n'||k==='s'||k==='g'||k==='role')?'asc':'desc';}
+      document.querySelectorAll('.tbl th').forEach(function(o){o.removeAttribute('data-dir');});
+      th.setAttribute('data-dir',sortD);
+      render();
+    });
+  });
+  render();
+})();
+})();
+</script>
+</body>
+</html>

@@ -30,7 +30,7 @@ Of the **₫989.3tn** remitted by the 200 largest contributors, state-owned ente
 
 Against total FY2025 budget revenue of ₫2,650.1tn, the whole list is **37.3%** of revenue and the 74 state firms alone are **16.8%**.
 
-**The state share fell from 54.4% to 45.0% in one year.** State remittance rose in absolute terms; it simply grew far more slowly than the private side, which was up 57%. Almost the entire swing is one firm: Vingroup went from ₫56,163bn to ₫148,773bn, of which ₫93,813bn is land and land rent — a single year of land obligations worth 9.5% of the entire list. Read the shift as a land-revenue event, not a structural rebalancing of the tax base.
+**The state share fell from 54.4% to 45.0% in one year.** State remittance rose in absolute terms; it simply grew far more slowly than the private side, which was up 57%. Most of the swing is one firm and a re-cut list: Vingroup accounts for 5.5 of the 9.3 points and list turnover for 3.4, leaving 0.4 of a point across the 168 enterprises present in both years. Vingroup went from ₫56,163bn to ₫148,773bn, of which ₫93,813bn is land and land rent — a single year of land obligations worth 9.5% of the entire list. Read the shift as a land-revenue event, not a structural rebalancing of the tax base: on a balanced panel excluding Vingroup the state share is essentially flat, at 59.6% against 59.2%.
 
 Real estate and construction is now the largest sector at 23.7% of the list and 91% private. Tobacco and the provincial lotteries remain entirely state-owned; coal and mining is 97% state; oil, gas and fuels is 85% state.
 

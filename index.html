@@ -818,7 +818,11 @@ document.getElementById('yoy-txt').textContent=
  'The list grew '+pc(V.total/V.prevtot-1,0)+' in a year, and the state share fell from '+
  pc(V.prev.SOE/V.prevtot)+' to '+pc(V.own.SOE.v/V.total)+
  '. State remittance itself rose; it simply grew far more slowly than the private side, which was up '+
- pc(V.own.Private.v/V.prev.Private-1,0)+'. Almost the entire swing is one firm. '+vic.n+' went from \u20ab56,163 bn to \u20ab'+
+ pc(V.own.Private.v/V.prev.Private-1,0)+'. Most of the swing is one firm and a re-cut list: '+vic.n+
+ ' accounts for '+Math.abs(X.bases[1].d-X.bases[2].d).toFixed(1)+' of the '+Math.abs(X.bases[0].d).toFixed(1)+
+ ' points and list turnover for '+Math.abs(X.bases[0].d-X.bases[1].d).toFixed(1)+', leaving '+
+ Math.abs(X.bases[2].d).toFixed(1)+' of a point across the '+X.bases[2].n25+
+ ' enterprises present in both years. '+vic.n+' went from \u20ab56,163 bn to \u20ab'+
  bn(vic.t)+' bn, of which \u20ab'+bn(vic.d[4])+' bn is land and land rent \u2014 a single year of land obligations worth '+
  pc(vic.d[4]/V.total)+' of the entire list.';
 

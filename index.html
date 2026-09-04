@@ -42,7 +42,7 @@ nav .brand{font-family:Fraunces,Georgia,serif;color:var(--ink);font-weight:700;f
 .hero .sub b{color:#FBFBF7;font-weight:600}
 .gridwrap{margin-top:42px;background:#0F1A20;border:1px solid #2B3A41;padding:24px 24px 18px;border-radius:3px}
 .gridwrap svg{display:block}
-.gax{fill:#7D9198;font-family:"Public Sans",Arial,sans-serif;font-size:13px;font-weight:600}
+.gax{fill:#66787E;font-family:"Public Sans",Arial,sans-serif;font-size:12px;font-weight:600}
 .gridwrap rect{cursor:crosshair;transition:opacity .12s}
 .gridwrap.dim rect{opacity:.24}
 .gridwrap.dim rect.on{opacity:1}
@@ -306,7 +306,7 @@ footer .wrap{border-top:1px solid #2B3A41;padding-top:22px}
         <button class="chip" data-own="SOE" aria-pressed="false"><i style="background:var(--soe)"></i><span data-lab="State-owned"></span></button>
         <button class="chip" data-own="Private" aria-pressed="false"><i style="background:var(--private)"></i><span data-lab="Domestic private"></span></button>
         <button class="chip" data-own="FDI" aria-pressed="false"><i style="background:var(--fdi)"></i><span data-lab="Foreign-invested"></span></button>
-        <span class="gnote">One square per enterprise, ranked largest first, in rows of 25 &mdash; the number on the left is the first rank in that row. Click a label to isolate a group.</span>
+        <span class="gnote">One square per enterprise, ranked largest first, left to right in rows of 25. Click a label to isolate a group.</span>
       </div>
     </div>
   </div>
@@ -579,17 +579,16 @@ function firmTip(f,tot,extra){
 
 /* ---------- hero grid ---------- */
 (function(){
-  var COLS=25,SQ=26,GAP=5,GUT=42,n=V.firms.length,rows=Math.ceil(n/COLS);
+  var COLS=25,SQ=26,GAP=5,GL=20,GR=42,n=V.firms.length,rows=Math.ceil(n/COLS);
   var W=COLS*SQ+(COLS-1)*GAP,H=rows*SQ+(rows-1)*GAP;
-  var svg='<svg viewBox="0 0 '+(W+GUT)+' '+H+'" width="100%" role="img" aria-label="Two hundred squares, one per enterprise, ordered by rank in rows of twenty-five and coloured by ownership">';
-  /* rank gutter: the first rank on each row, so a square can be read off the axis */
-  for(var r=0;r<rows;r++){
-    svg+='<text class="gax" x="'+(GUT-11)+'" y="'+(r*(SQ+GAP)+SQ/2+4)+'" text-anchor="end">'+(r*COLS+1)+'</text>';
-  }
+  var svg='<svg viewBox="0 0 '+(GL+W+GR)+' '+H+'" width="100%" role="img" aria-label="Two hundred squares, one per enterprise, ordered by rank from the top left and coloured by ownership">';
   V.firms.forEach(function(f,i){
-    svg+='<rect data-i="'+i+'" data-own="'+f.o+'" x="'+(GUT+(i%COLS)*(SQ+GAP))+'" y="'+Math.floor(i/COLS)*(SQ+GAP)+
+    svg+='<rect data-i="'+i+'" data-own="'+f.o+'" x="'+(GL+(i%COLS)*(SQ+GAP))+'" y="'+Math.floor(i/COLS)*(SQ+GAP)+
          '" width="'+SQ+'" height="'+SQ+'" rx="2" fill="'+HEX[f.o]+'"><title>'+esc(f.n)+' \u2014 rank '+f.r+'</title></rect>';
   });
+  /* just the two endpoints of the reading order */
+  svg+='<text class="gax" x="'+(GL-7)+'" y="'+(SQ/2+4)+'" text-anchor="end">1</text>'+
+       '<text class="gax" x="'+(GL+W+8)+'" y="'+((rows-1)*(SQ+GAP)+SQ/2+4)+'" text-anchor="start">'+n+'</text>';
   document.getElementById('grid').innerHTML=svg+'</svg>';
   var wrapEl=document.getElementById('gridwrap');
   wrapEl.addEventListener('mouseover',function(e){

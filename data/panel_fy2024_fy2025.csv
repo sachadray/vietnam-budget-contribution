@@ -1,0 +1,232 @@
+code,trading_name,name_vi,ownership,sector,status,fy2024_vnd_bn,fy2025_vnd_bn,change_vnd_bn,in_balanced_panel
+VIC,Vingroup,Tập đoàn Vingroup - Công ty Cổ phần,Private,Real estate & construction,common,56163.0,148773.0,92610.0,TRUE
+PVN,PetroVietnam,Tập đoàn Công nghiệp - Năng lượng Quốc gia Việt Nam,SOE,"Oil, gas & fuels",common,77390.0,90991.0,13601.0,TRUE
+VIETTEL,Viettel,Tập đoàn Công nghiệp - Viễn thông Quân đội (Viettel),SOE,Technology & telecom,common,46345.0,42290.0,-4055.0,TRUE
+PLX,Petrolimex,Tập đoàn Xăng dầu Việt Nam,SOE,"Oil, gas & fuels",common,32694.0,30575.0,-2119.0,TRUE
+HEINEKEN,Heineken Vietnam,Công ty TNHH Nhà máy Bia Heineken Việt Nam,FDI,"Food, beverage & brewing",common,33000.0,27000.0,-6000.0,TRUE
+TOYOTAVN,Toyota Vietnam,Công ty Ô tô Toyota Việt Nam,FDI,Automotive,common,22119.0,26000.0,3881.0,TRUE
+KSF,Sunshine Group,Công ty Cổ phần Tập đoàn Sunshine,Private,Real estate & construction,entered,,24045.0,,FALSE
+VINACOMIN,Vinacomin,Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam,SOE,Coal & mining,common,25128.0,24031.0,-1097.0,TRUE
+NSRP,NSRP,Công ty TNHH Lọc hóa dầu Nghi Sơn,FDI,"Oil, gas & fuels",common,24700.0,23000.0,-1700.0,TRUE
+VINATABA,Vinataba,Tổng Công ty Thuốc lá Việt Nam - Công ty TNHH MTV,SOE,Tobacco,common,18154.0,22335.0,4181.0,TRUE
+VIETSOVPETRO,Vietsovpetro,Liên doanh Việt - Nga Vietsovpetro,SOE,"Oil, gas & fuels",common,25245.0,21450.0,-3795.0,TRUE
+THA,Thaco Group,CTCP Tập đoàn Trường Hải,Private,Automotive,common,23700.0,21158.0,-2542.0,TRUE
+EVN,EVN,Tập đoàn Điện lực Việt Nam - Công ty TNHH MTV,SOE,Power & electrical,common,19277.0,20891.0,1614.0,TRUE
+SAB,Sabeco,Tổng CTCP Bia - Rượu - Nước giải khát Sài Gòn,FDI,"Food, beverage & brewing",common,12656.0,14917.0,2261.0,TRUE
+CIPUTRAHN,Ciputra Hanoi,Công ty TNHH Phát Triển Khu đô thị Nam Thăng Long,FDI,Real estate & construction,entered,,13600.0,,FALSE
+NHSC,NH Smart City,Công ty Cổ phần Đầu tư phát triển Thành phố Thông minh Bắc Hà Nội,Private,Real estate & construction,entered,,13171.0,,FALSE
+HPG,Hòa Phát Group,Công ty cổ phần Tập đoàn Hòa Phát,Private,Steel & building materials,common,13426.0,12954.0,-472.0,TRUE
+VCB,Vietcombank,Ngân hàng Thương mại cổ phần Ngoại thương Việt Nam,SOE,Banking,common,12045.0,12494.0,449.0,TRUE
+TCGROUP,Thành Công Group,Tập đoàn Thành Công (TC Group),Private,Automotive,common,16468.0,12441.0,-4027.0,TRUE
+HONDA,Honda Vietnam,Công ty Honda Việt Nam,FDI,Automotive,entered,,11880.0,,FALSE
+BID,BIDV,Ngân hàng Thương mại cổ phần Đầu tư và Phát triển Việt Nam,SOE,Banking,common,10074.0,11374.0,1300.0,TRUE
+FORDVN,Ford Vietnam,Công ty TNHH Ford Việt Nam,FDI,Automotive,common,4634.0,11300.0,6666.0,TRUE
+FPT,FPT,Công ty Cổ phần FPT,Private,Technology & telecom,common,9227.0,11291.0,2064.0,TRUE
+TCB,Techcombank,Ngân hàng TMCP Kỹ Thương Việt Nam,Private,Banking,common,6775.0,10984.0,4209.0,TRUE
+CTG,Vietinbank,Ngân hàng Thương mại Cổ phần Công thương Việt Nam,SOE,Banking,common,8973.0,10057.0,1084.0,TRUE
+MBB,MB,Ngân hàng Thương mại cổ phần Quân đội,SOE,Banking,common,8625.0,10004.0,1379.0,TRUE
+SCIC,SCIC,Tổng Công ty Đầu tư và Kinh doanh vốn Nhà nước,SOE,Finance & investment,common,9568.0,8404.0,-1164.0,TRUE
+AGRIBANK,Agribank,Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam,SOE,Banking,common,9178.0,7854.0,-1324.0,TRUE
+VPB,VPBank,Ngân hàng Thương mại Cổ phần Việt Nam Thịnh Vượng,Private,Banking,common,5846.0,6883.0,1037.0,TRUE
+HFIC,HFIC,Công ty Đầu tư Tài chính Nhà nước T.P Hồ Chí Minh,SOE,Finance & investment,common,5378.0,6794.0,1416.0,TRUE
+VNPT,VNPT,Tập đoàn Bưu chính Viễn thông Việt Nam,SOE,Technology & telecom,common,5369.0,6078.0,709.0,TRUE
+ACB,ACB,Ngân hàng Thương Mại Cổ Phần Á Châu,Private,Banking,common,5507.0,5782.0,275.0,TRUE
+CTX,CTX Holdings,Tổng Công ty Cổ phần Đầu tư Xây dựng và Thương mại Việt Nam,Private,Real estate & construction,entered,,5127.0,,FALSE
+ACV,ACV,Tổng công ty Cảng hàng không Việt Nam - CTCP,SOE,Aviation,common,4475.0,4656.0,181.0,TRUE
+MSN,Masan Group,Công ty Cổ phần Tập đoàn MaSan,Private,"Food, beverage & brewing",common,4803.0,4636.0,-167.0,TRUE
+STB,Sacombank,Ngân hàng Thương mại Cổ phần Sài Gòn Tài Lộc,Private,Banking,common,3916.0,4304.0,388.0,TRUE
+KHATOCO,Khatoco,Tổng Công ty Khánh Việt,SOE,Tobacco,common,4081.0,4292.0,211.0,TRUE
+BHN,Habeco,Tổng CTCP Bia - Rượu - Nước giải khát Hà Nội,SOE,"Food, beverage & brewing",common,4049.0,4158.0,109.0,TRUE
+VNM,Vinamilk,Công ty Cổ phần Sữa Việt Nam,Private,"Food, beverage & brewing",common,4569.0,3856.0,-713.0,TRUE
+HDB,HDBank,Ngân hàng TMCP Phát triển T.P Hồ Chí Minh,Private,Banking,common,6021.0,3744.0,-2277.0,TRUE
+CNS,CNS,Tổng Công ty Công nghiệp Sài Gòn - TNHH Một thành viên,SOE,Tobacco,common,3975.0,3691.0,-284.0,TRUE
+TLP,Thalexim,Tổng Công ty Thương mại Xuất nhập khẩu Thanh Lễ - CTCP,Private,"Oil, gas & fuels",common,3426.0,3468.0,42.0,TRUE
+GVR,Vietnam Rubber Group,Tập đoàn Công nghiệp Cao su Việt Nam,SOE,"Chemicals, plastics & rubber",common,2750.0,3413.0,663.0,TRUE
+BIMGROUP,BIM Group,Công ty Cổ phần Tập đoàn BIM,Private,Power & electrical,common,1444.0,3316.0,1872.0,TRUE
+LPB,LPBank,Ngân hàng Thương mại cổ phần Lộc Phát Việt Nam,Private,Banking,common,3359.0,3298.0,-61.0,TRUE
+HVN,Vietnam Airlines,Tổng Công ty Hàng không Việt Nam - CTCP,SOE,Aviation,common,3152.0,3291.0,139.0,TRUE
+VNEX,Vietnam Exchange,Sở Giao dịch Chứng khoán Việt Nam,SOE,Finance & investment,common,2583.0,3283.0,700.0,TRUE
+SHB,SHB,Ngân hàng Thương mại cổ phần Sài Gòn - Hà Nội,Private,Banking,common,2466.0,3249.0,783.0,TRUE
+SAWACO,Sawaco,Tổng Công ty Cấp nước Sài Gòn,SOE,Water & utilities,common,3211.0,3179.0,-32.0,TRUE
+TAL,Taseco Land,Công ty cổ phần Đầu tư Bất động sản Taseco,Private,Real estate & construction,common,1398.0,3148.0,1750.0,TRUE
+APPLE,Apple Việt Nam,Công ty TNHH Apple Việt Nam,FDI,Retail & trade,common,1000.0,3000.0,2000.0,TRUE
+MMVN,Mitsubishi Motors,Công ty TNHH ô tô Mitsubishi Việt Nam,FDI,Automotive,entered,,3000.0,,FALSE
+SNP,Saigon New Port/SNP,Công ty TNHH MTV - Tổng Công ty Tân Cảng Sài Gòn,SOE,Logistics & transport,common,2672.0,3000.0,328.0,TRUE
+CARLSBERG,Carlsberg Việt Nam,Công ty TNHH Bia Carlsberg Việt Nam,FDI,"Food, beverage & brewing",common,3900.0,3000.0,-900.0,TRUE
+VATM,VATM,Tổng Công ty Quản lý bay Việt Nam,SOE,Aviation,common,2898.0,2948.0,50.0,TRUE
+GEX,Gelex,Công ty Cổ phần Tập đoàn GELEX,Private,Power & electrical,common,2732.0,2892.0,160.0,TRUE
+PDR,Phát Đạt,Công ty cổ phần Phát triển Bất động sản Phát Đạt,Private,Real estate & construction,common,1192.0,2890.0,1698.0,TRUE
+VCK,VPS Securities,Công ty cổ phần Chứng khoán VPS,Private,Securities,common,2302.0,2848.0,546.0,TRUE
+XSLA,Long An Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT LONG AN,SOE,Lottery,common,2200.0,2797.0,597.0,TRUE
+XSBL,Bạc Liêu Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT BẠC LIÊU,SOE,Lottery,common,2219.0,2751.0,532.0,TRUE
+XSBINHDUONG,Bình Dương Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT BÌNH DƯƠNG,SOE,Lottery,common,2302.0,2749.0,447.0,TRUE
+TPB,TPBank,Ngân hàng Thương mại cổ phần Tiên Phong,Private,Banking,common,2314.0,2744.0,430.0,TRUE
+XSBENTRE,Bến Tre Lottery,Công ty TNHH MTV Xổ Số Kiến Thiết Bến Tre,SOE,Lottery,common,2438.0,2738.0,300.0,TRUE
+VIB,VIB,Ngân hàng Thương mại cổ phần Quốc tế Việt Nam,Private,Banking,common,2618.0,2731.0,113.0,TRUE
+XSCM,Cà Mau Lottery,Công ty TNHH MTV Xổ số kiến thiết Cà Mau,SOE,Lottery,common,2414.0,2721.0,307.0,TRUE
+XSTN,Tây Ninh Lottery,Công ty TNHH Xổ số kiến thiết tỉnh Tây Ninh,SOE,Lottery,common,2463.0,2718.0,255.0,TRUE
+XSDT,Đồng Tháp Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TỈNH ĐỒNG THÁP,SOE,Lottery,common,2364.0,2682.0,318.0,TRUE
+XSKG,Kiên Giang Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT KIÊN GIANG,SOE,Lottery,common,2348.0,2680.0,332.0,TRUE
+XSTV,Trà Vinh Lottery,Xổ số kiến thiết tỉnh Trà Vinh,SOE,Lottery,common,2565.0,2648.0,83.0,TRUE
+XSBINHTHUAN,Bình Thuận Lottery,Công ty TNHH MTV Xổ số kiến thiết Bình Thuận,SOE,Lottery,common,2234.0,2635.0,401.0,TRUE
+XSVL,Vĩnh Long Lottery,Công ty TNHH MTV Xổ số kiến thiết Vĩnh Long,SOE,Lottery,common,2216.0,2615.0,399.0,TRUE
+SATRA,Satra,Tổng Công ty Thương mại Sài Gòn - TNHH MTV,SOE,Retail & trade,common,8212.0,2602.0,-5610.0,TRUE
+XSBRVT,BRVT Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TỈNH BÀ RỊA - VŨNG TÀU,SOE,Lottery,common,2216.0,2591.0,375.0,TRUE
+XSLD,Lâm Đồng Lottery,Công ty TNHH MTV Xổ số kiến thiết Lâm Đồng,SOE,Lottery,common,2447.0,2579.0,132.0,TRUE
+XSAG,An Giang Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT AN GIANG,SOE,Lottery,common,2290.0,2543.0,253.0,TRUE
+XSTG,Tiền Giang Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT TIỀN GIANG,SOE,Lottery,common,2197.0,2529.0,332.0,TRUE
+XSDONGNAI,Đồng Nai Lottery,CÔNG TY TNHH MTV XỔ SỐ KIẾN THIẾT VÀ DỊCH VỤ TỔNG HỢP ĐỒNG NAI,SOE,Lottery,common,2172.0,2460.0,288.0,TRUE
+XSCT,Cần Thơ Lottery,CÔNG TY TNHH NHÀ NƯỚC MTV XỔ SỐ KIẾN THIẾT CẦN THƠ,SOE,Lottery,common,2203.0,2452.0,249.0,TRUE
+NECORP,Necorp,Tổng Công ty Đông Bắc - BQP,SOE,Coal & mining,common,2427.0,2444.0,17.0,TRUE
+JSRE,JS REAL ESTATE,Công ty Cổ phần Bất động sản JS,Private,Real estate & construction,entered,,2400.0,,FALSE
+DLPQ,Corona Casino & Resort,Công ty cổ phần Đầu tư Phát triển Du lịch Phú Quốc,Private,Tourism & hospitality,entered,,2333.0,,FALSE
+XSST,Sóc Trăng Lottery,Công ty TNHH MTV Xổ số kiến thiết Sóc Trăng,SOE,Lottery,common,2162.0,2321.0,159.0,TRUE
+VINACHEM,Vinachem,Tập đoàn Hoá chất Việt Nam,SOE,"Chemicals, plastics & rubber",common,2530.0,2268.0,-262.0,TRUE
+VIETLOTT,Vietlott,Công ty TNHH MTV Xổ số điện toán Việt Nam,SOE,Lottery,common,2080.0,2265.0,185.0,TRUE
+HUT,TASCO,Công ty Cổ phần Tasco,Private,Automotive,common,978.0,2227.0,1249.0,TRUE
+PNJ,PNJ,Công ty Cổ phần Vàng bạc Đá quý Phú Nhuận,Private,Retail & trade,common,2116.0,2128.0,12.0,TRUE
+XSHG,Hậu Giang Lottery,Công ty TNHH MTV Xổ số kiến thiết Hậu Giang,SOE,Lottery,common,2005.0,2115.0,110.0,TRUE
+MWG,Mobile World Group,Công ty Cổ phần đầu tư Thế giới di động,Private,Retail & trade,common,1297.0,2056.0,759.0,TRUE
+HUDX,HUD,Tổng Công ty Đầu tư Phát triển nhà và Đô thị-Công ty TNHH,SOE,Real estate & construction,common,1138.0,1951.0,813.0,TRUE
+REE,REE,Công ty Cổ phần Cơ điện lạnh,Private,Power & electrical,common,1447.0,1943.0,496.0,TRUE
+XSBP,Bình Phước Lottery,Công ty TNHH MTV Xổ số kiến thiết và dịch vụ tổng hợp Bình Phước,SOE,Lottery,common,1617.0,1910.0,293.0,TRUE
+VRE,Vincom Retail,Công ty Cổ phần Vincom Retail,Private,Real estate & construction,common,2371.0,1900.0,-471.0,TRUE
+VNZ,VNG Group,Công ty Cổ phần Tập đoàn VNG,Private,Technology & telecom,common,1588.0,1867.0,279.0,TRUE
+PDT,Petimex,Công ty TNHH MTV Thương mại Dầu khí Đồng Tháp,SOE,"Oil, gas & fuels",common,2354.0,1819.0,-535.0,TRUE
+BVH,BaoViet Holdings,Tập đoàn Bảo Việt,SOE,Insurance,common,1967.0,1817.0,-150.0,TRUE
+VJC,Vietjetair,Công ty Cổ phần Hàng không Vietjet,Private,Aviation,common,1150.0,1809.0,659.0,TRUE
+SSI,SSI,Công ty cổ phần Chứng khoán SSI,Private,Securities,common,1664.0,1807.0,143.0,TRUE
+SSB,Seabank,Ngân hàng Thương mại cổ phần Đông Nam Á,Private,Banking,common,1419.0,1755.0,336.0,TRUE
+STARLAKE,Starlake,Công ty TNHH Phát triển THT,FDI,Real estate & construction,entered,,1600.0,,FALSE
+MSB,MSB,Ngân hàng Thương mại cổ phần Hàng hải Việt Nam,Private,Banking,common,1784.0,1591.0,-193.0,TRUE
+MOBIFONE,Mobifone,Tổng Công ty Viễn thông Mobifone,SOE,Technology & telecom,entered,,1500.0,,FALSE
+IDC,IDICO,Tổng công ty IDICO - Công ty Cổ phần,Private,Power & electrical,common,1601.0,1497.0,-104.0,TRUE
+PVI,PVI Holdings,Công ty Cổ phần PVI,FDI,Insurance,common,1437.0,1481.0,44.0,TRUE
+TADT,Tân Á Đại Thành Investment Group,CTCP Đầu tư Tập đoàn Tân Á Đại Thành,Private,Real estate & construction,entered,,1474.0,,FALSE
+SAIGONTOURIST,Saigontourist,Tổng Công ty Du lịch Sài Gòn - TNHH Một thành viên,SOE,Tourism & hospitality,common,1988.0,1439.0,-549.0,TRUE
+VVS,VIMID,CTCP Đầu tư Phát triển Máy Việt Nam,Private,Automotive,common,592.0,1428.0,836.0,TRUE
+DOFICO,Dofico,Tổng Công ty Công nghiệp Thực phẩm Đồng Nai,SOE,Tobacco,common,1440.0,1402.0,-38.0,TRUE
+VSIPNA,VSIP Nghệ An,Công ty TNHH VSIP Nghệ An,FDI,Real estate & construction,common,1261.0,1377.0,116.0,TRUE
+EIB,Eximbank,Ngân hàng Thương mại Cổ phần Xuất nhập khẩu Việt Nam,Private,Banking,common,1050.0,1298.0,248.0,TRUE
+DAIICHILIFE,Dai-ichi Life,Công ty TNHH Bảo hiểm Nhân thọ Dai-ichi Việt Nam,FDI,Insurance,common,970.0,1295.0,325.0,TRUE
+MANULIFE,Manulife Vietnam,Công ty TNHH Manulife (Việt Nam),FDI,Insurance,common,588.0,1276.0,688.0,TRUE
+HSG,Hoa Sen Group,Công ty Cổ phần Tập đoàn Hoa Sen,Private,Steel & building materials,common,1653.0,1230.0,-423.0,TRUE
+PC1,PC1 Group,Công ty Cổ phần Tập đoàn PC1,Private,Power & electrical,common,1446.0,1149.0,-297.0,TRUE
+DXG,BLUEMARQ GROUP,Công ty Cổ phần BLUEMARQ GROUP,Private,Real estate & construction,common,821.0,1133.0,312.0,TRUE
+VICEM,Vicem,Tổng Công ty Công nghiệp Xi măng Việt Nam,SOE,Steel & building materials,common,1038.0,1110.0,72.0,TRUE
+MVN,VIMC,Tổng Công ty Hàng hải Việt Nam - CTCP,SOE,Logistics & transport,common,1060.0,1107.0,47.0,TRUE
+HOIANA,Hoiana,Công ty TNHH Phát triển Nam Hội An,FDI,Tourism & hospitality,common,650.0,1100.0,450.0,TRUE
+NVL,Novaland Group,Công ty cổ phần Tập đoàn Đầu tư Địa ốc No Va,Private,Real estate & construction,common,1145.0,1095.0,-50.0,TRUE
+VPI,Văn Phú,Công ty cổ phần Phát triển Bất động sản Văn Phú,Private,Real estate & construction,common,620.0,1093.0,473.0,TRUE
+NAB,NamA Bank,Ngân hàng Thương mại cổ phần Nam Á,Private,Banking,common,1294.0,1073.0,-221.0,TRUE
+SMB,Bia Sài Gòn - Miền Trung,CTCP Bia Sài Gòn - Miền Trung,Private,"Food, beverage & brewing",common,1206.0,1067.0,-139.0,TRUE
+QNS,QNS,Công ty Cổ phần Đường Quảng Ngãi,Private,"Food, beverage & brewing",common,1020.0,1025.0,5.0,TRUE
+KLMH,KIM LONG MOTORS,CTCP Kim Long Motor Huế,Private,Automotive,common,800.0,1012.0,212.0,TRUE
+OCB,OCB,Ngân hàng Thương mại cổ phần Phương Đông,Private,Banking,common,1183.0,1007.0,-176.0,TRUE
+UNILEVER,Unilever Vietnam,Công ty TNHH Quốc tế Unilever Việt Nam,FDI,"Food, beverage & brewing",entered,,1000.0,,FALSE
+CPVN,C.P Vietnam Corporation,Công ty cổ phần Chăn nuôi C.P Việt Nam,FDI,Manufacturing & other industry,entered,,1000.0,,FALSE
+LSPETRO,Long Sơn Petrochemicals,Công ty TNHH Hoá dầu Long Sơn,FDI,"Chemicals, plastics & rubber",entered,,1000.0,,FALSE
+GRAB,GRAB,Công ty TNHH Grab,FDI,Technology & telecom,common,500.0,1000.0,500.0,TRUE
+WORLDAUTO,World Auto,Công ty TNHH World Auto,Private,Automotive,common,1000.0,1000.0,0.0,TRUE
+MERCEDESVN,Mercedes-Benz VietNam,Công ty TNHH Mercedes-Benz Việt Nam,FDI,Automotive,common,1000.0,1000.0,0.0,TRUE
+VND,VNDirect,Công ty cổ phần Chứng khoán VNDirect,Private,Securities,common,942.0,966.0,24.0,TRUE
+SAIGONPETRO,Saigon Petro,Công ty TNHH MTV Dầu khí Thành phố Hồ Chí Minh,SOE,"Oil, gas & fuels",common,1070.0,965.0,-105.0,TRUE
+PET,Petrosetco,Tổng công ty Cổ phần Dịch vụ Tổng hợp Dầu khí,Private,Retail & trade,common,637.0,929.0,292.0,TRUE
+TVN,VNSteel,Tổng Công ty Thép Việt Nam - CTCP,SOE,Steel & building materials,common,713.0,927.0,214.0,TRUE
+NUTIFOOD,Nutifood,Công ty Cổ phần Thực phẩm dinh dưỡng Nutifood,Private,"Food, beverage & brewing",common,833.0,915.0,82.0,TRUE
+NLG,Nam Long,Công ty cổ phần Đầu tư Nam Long,Private,Real estate & construction,common,1153.0,911.0,-242.0,TRUE
+PRUDENTIAL,Prudential,Công ty TNHH Bảo hiểm Nhân thọ Prudential Việt Nam,FDI,Insurance,common,773.0,903.0,130.0,TRUE
+KDH,Khang Điền,Công ty Cổ phần Đầu tư và Kinh doanh nhà Khang Điền,Private,Real estate & construction,common,1701.0,896.0,-805.0,TRUE
+VGT,Vinatex,Tập đoàn Dệt may Việt Nam,SOE,Textiles,common,850.0,895.0,45.0,TRUE
+AIG,AIG Group,Công ty Cổ phần Nguyên liệu Á Châu AIG,Private,"Food, beverage & brewing",common,1138.0,895.0,-243.0,TRUE
+SNZ,Sonadezi,Tổng Công ty Cổ phần phát triển khu Công nghiệp,SOE,Real estate & construction,common,799.0,876.0,77.0,TRUE
+NKG,Nam Kim,Công ty Cổ phần Thép Nam Kim,Private,Steel & building materials,common,1092.0,876.0,-216.0,TRUE
+DGC,Đức Giang Chem,CTCP Tập đoàn Hoá chất Đức Giang,Private,"Chemicals, plastics & rubber",common,761.0,874.0,113.0,TRUE
+HCM,HSC,Công ty Cổ phần Chứng khoán Thành phố Hồ Chí Minh,Private,Securities,common,721.0,872.0,151.0,TRUE
+VNRAILWAYS,Vietnam Railways,Công ty TNHH Một thành viên - Tập đoàn Đường sắt Quốc gia Việt Nam,SOE,Logistics & transport,common,810.0,852.0,42.0,TRUE
+KBC,Kinh Bac City,Tổng Công ty Phát triển đô thị Kinh Bắc-CTCP,Private,Real estate & construction,common,525.0,804.0,279.0,TRUE
+VNPOST,VNPost,TỔNG CÔNG TY BƯU ĐIỆN VIỆT NAM,SOE,Logistics & transport,common,718.0,789.0,71.0,TRUE
+CMG,CMC Group,Công ty Cổ phần Tập đoàn Công nghệ CMC,Private,Technology & telecom,common,479.0,784.0,305.0,TRUE
+BCM,Becamex IDC,Tập đoàn Đầu tư và Phát triển công nghiệp Becamex - CTCP,SOE,Real estate & construction,common,1692.0,773.0,-919.0,TRUE
+VCI,Vietcap Securities,Công ty cổ phần Chứng khoán Vietcap,Private,Securities,common,570.0,764.0,194.0,TRUE
+FRT,FPT Retail,Công ty Cổ phần Bán lẻ Kỹ thuật số FPT,Private,Retail & trade,entered,,763.0,,FALSE
+ABB,ABBank,Ngân hàng Thương mại cổ phần An Bình,Private,Banking,entered,,763.0,,FALSE
+VPG,Việt Phát,CTCP Đầu tư Thương mại Xuất nhập khẩu Việt Phát,Private,Coal & mining,common,1242.0,748.0,-494.0,TRUE
+HLB,Halobeco,CTCP Bia và nước giải khát Hạ Long,Private,"Food, beverage & brewing",common,884.0,745.0,-139.0,TRUE
+STAVIAN,STAVIAN GROUP,CTCP Stavian Hoá chất,Private,"Chemicals, plastics & rubber",entered,,736.0,,FALSE
+HSBC,HSBC Việt Nam,HSBC Việt Nam,FDI,Banking,common,987.0,694.0,-293.0,TRUE
+INTIMEXG,Intimex Group,Công ty cổ phần Tập đoàn Intimex,Private,Manufacturing & other industry,entered,,692.0,,FALSE
+SBT,AgriS,CTCP Thành Thành Công - Biên Hòa,Private,Manufacturing & other industry,common,542.0,690.0,148.0,TRUE
+TCH,Hoang Huy Group,Công ty cổ phần Đầu tư Dịch vụ Tài chính Hoàng Huy,Private,Real estate & construction,common,772.0,670.0,-102.0,TRUE
+HDG,Hà Đô Group,Công ty Cổ phần Tập đoàn Hà Đô,Private,Power & electrical,common,476.0,662.0,186.0,TRUE
+MIRAEASSET,MAS,CTCP Chứng khoán Mirae Asset (Việt Nam),FDI,Securities,common,602.0,658.0,56.0,TRUE
+SJG,Sông Đà Corp,Tổng Công ty Sông Đà - Công ty cổ phần,SOE,Real estate & construction,common,600.0,624.0,24.0,TRUE
+L18,Licogi 18,Công ty Cổ phần Đầu tư và Xây dựng số 18,Private,Real estate & construction,common,1007.0,621.0,-386.0,TRUE
+VSDC,VSDC,Tổng Công ty lưu ký và bù trừ Chứng khoán Việt Nam,SOE,Finance & investment,common,480.0,602.0,122.0,TRUE
+TID,Tinnghia Corp,CTCP Tổng Công ty Tín Nghĩa,Private,Real estate & construction,entered,,591.0,,FALSE
+GMD,Gemadept,Công ty Cổ phần Tập đoàn Gemadept,Private,Logistics & transport,common,443.0,564.0,121.0,TRUE
+BSGBT,Bia Sai Gon - Ben Tre,CTCP Bia Sài Gòn - Bến Tre,Private,"Food, beverage & brewing",common,626.0,550.0,-76.0,TRUE
+DOJI,DOJI,CTCP Tập đoàn Vàng bạc đá quý Doji,Private,Real estate & construction,common,1056.0,545.0,-511.0,TRUE
+HANDICO,Handico,Tổng Công ty Đầu tư và phát triển Nhà Hà Nội,SOE,Real estate & construction,common,752.0,543.0,-209.0,TRUE
+YSKH,Yến Sào Khánh Hòa,Công ty TNHH Nhà nước MTV Yến sào Khánh Hòa,SOE,"Food, beverage & brewing",common,388.0,535.0,147.0,TRUE
+THMF,TH Milk Food,Công ty Cổ phần Thực phẩm Sữa TH,Private,"Food, beverage & brewing",common,441.0,529.0,88.0,TRUE
+KDC,Kido Group,Tập đoàn KIDO,Private,"Food, beverage & brewing",common,589.0,525.0,-64.0,TRUE
+F88,F88 Investment,Công ty cổ phần Đầu tư F88,Private,Finance & investment,common,435.0,496.0,61.0,TRUE
+BMP,Nhựa Bình Minh,Công ty Cổ phần Nhựa Bình Minh,FDI,Steel & building materials,common,405.0,488.0,83.0,TRUE
+LIC,Licogi,Tổng Công ty Licogi - Công ty Cổ phần,Private,Real estate & construction,entered,,487.0,,FALSE
+APF,APFCO,Công ty Cổ phần Nông sản thực phẩm Quảng Ngãi,Private,Manufacturing & other industry,common,347.0,479.0,132.0,TRUE
+GOLDENGATE,Golden Gate Group,Công ty Cổ phần Tập đoàn Golden Gate,Private,"Food, beverage & brewing",common,377.0,476.0,99.0,TRUE
+KLB,Kienlong Bank,Ngân hàng Thương mại cổ phần Kiên Long,Private,Banking,entered,,474.0,,FALSE
+SAMCO,SAMCO,Tổng Công ty Cơ khí Giao thông Vận tải Sài Gòn - TNHH MTV,SOE,Automotive,common,1273.0,468.0,-805.0,TRUE
+PAN,The PAN Group,Công ty Cổ phần Tập đoàn PAN,Private,"Food, beverage & brewing",common,656.0,465.0,-191.0,TRUE
+TOS,Tân Cảng Offshore Services,CTCP Dịch vụ Biển Tân Cảng,SOE,Logistics & transport,entered,,461.0,,FALSE
+VECX,VEC,Tổng Công ty Phát triển đường cao tốc Việt Nam,SOE,Real estate & construction,common,671.0,461.0,-210.0,TRUE
+SJCX,SJCX,Công ty TNHH MTV Vàng bạc đá quý Sài Gòn,SOE,Retail & trade,entered,,452.0,,FALSE
+BAB,BacA Bank,Ngân hàng Thương mại cổ phần Bắc Á,Private,Banking,common,421.0,446.0,25.0,TRUE
+PTB,Phú Tài,Công ty Cổ phần Phú Tài,Private,Steel & building materials,entered,,440.0,,FALSE
+FCN,Fecon,Công ty cổ phần FECON,Private,Real estate & construction,common,641.0,432.0,-209.0,TRUE
+VLB,BBCC,CTCP Xây dựng và Sản xuất Vật liệu Xây dựng Biên Hòa,Private,Steel & building materials,common,363.0,430.0,67.0,TRUE
+VCG,Vinaconex,Tổng CTCP Xuất nhập khẩu và Xây dựng Việt Nam,Private,Real estate & construction,common,1822.0,428.0,-1394.0,TRUE
+HAWACO,Hawaco,Công ty TNHH MTV Nước sạch Hà Nội,SOE,Water & utilities,common,638.0,425.0,-213.0,TRUE
+DHG,DHG Pharma,Công ty Cổ phần Dược Hậu Giang,FDI,Manufacturing & other industry,entered,,421.0,,FALSE
+IDP,LOF,Công ty Cổ phần Sữa Quốc tế Lof,Private,"Food, beverage & brewing",common,780.0,421.0,-359.0,TRUE
+DVV,DatViet VAC Group Holdings,Công ty cổ phần DatViet VAC Group Holdings,Private,Technology & telecom,entered,,421.0,,FALSE
+VNHELICOPTER,Vietnam Helicopters,Tổng Công ty Trực thăng Việt Nam - Công ty TNHH,SOE,Aviation,common,418.0,419.0,1.0,TRUE
+TMT,TMT Motor,Công ty cổ phần Ô tô TMT,Private,Automotive,entered,,418.0,,FALSE
+SHI,Sơn Hà,CTCP Quốc tế Sơn Hà,Private,Manufacturing & other industry,common,495.0,409.0,-86.0,TRUE
+MPC,Minh Phú,Công ty Cổ phần Tập đoàn Thủy sản Minh Phú,Private,Manufacturing & other industry,entered,,402.0,,FALSE
+BWE,BIWASE,CTCP – Tổng Công ty Nước – Môi trường Bình Dương,Private,Water & utilities,entered,,397.0,,FALSE
+CTD,Coteccons,Công ty Cổ phần Xây dựng Coteccons,Private,Real estate & construction,entered,,395.0,,FALSE
+KIS,KIS Việt Nam,Công ty Cổ phần Chứng khoán KIS Việt Nam,FDI,Securities,entered,,395.0,,FALSE
+ACG,An Cường Wood,Công ty Cổ phần Gỗ An Cường,Private,Steel & building materials,common,547.0,385.0,-162.0,TRUE
+SSH,Sunshine Homes,CTCP Phát triển Sunshine Homes,Private,Real estate & construction,left,376.0,,,FALSE
+NS2PC,Nghi Sơn 2,Công ty TNHH điện Nghi Sơn 2,FDI,Power & electrical,left,1100.0,,,FALSE
+DEOCA,Đèo Cả Group,CTCP Tập đoàn Đèo Cả,Private,Real estate & construction,left,370.0,,,FALSE
+COCACOLA,Coca-Cola Vietnam,Công ty TNHH Nước giải khát Coca - Cola Việt Nam,FDI,Other,left,500.0,,,FALSE
+SPXE,SPX Express,CÔNG TY TNHH SPX EXPRESS,FDI,Other,left,500.0,,,FALSE
+LONGHUNG,Long Hưng Petro,Công ty TNHH Thương mại và Dịch vụ Long Hưng,Private,"Oil, gas & fuels",left,1000.0,,,FALSE
+ASM,Sao Mai Group,Công ty Cổ phần Tập đoàn Sao Mai,Private,Real estate & construction,left,537.0,,,FALSE
+TIG,Thăng Long Invest,Công ty Cổ phần Tập đoàn Đầu tư Thăng Long,Private,Finance & investment,left,353.0,,,FALSE
+VHC,Vĩnh Hoàn,Công ty Cổ phần Vĩnh Hoàn,Private,"Food, beverage & brewing",left,362.0,,,FALSE
+VASNS,VAS Nghi Sơn,CTCP TẬP ĐOÀN VAS NGHI SƠN,Private,Steel & building materials,left,1000.0,,,FALSE
+AIAL,AIA Việt Nam,Công ty TNHH Bảo hiểm Nhân thọ AIA Việt Nam,FDI,Insurance,left,607.0,,,FALSE
+BCG,Bamboo Capital Group,Công ty cổ phần Bamboo Capital,Private,Power & electrical,left,477.0,,,FALSE
+STD,TDBeco,CTCP Bia - Nước giải khát Sài Gòn - Tây Đô,Private,"Food, beverage & brewing",left,337.0,,,FALSE
+ORS,TPS,Công ty cổ phần Chứng khoán Tiên Phong,Private,Securities,left,343.0,,,FALSE
+VEA,VEAM,Tổng Công ty Máy động lực và máy nông nghiệp Việt Nam - CTCP,SOE,Automotive,left,412.0,,,FALSE
+CII,CII,CTCP đầu tư hạ tầng kỹ thuật TP. Hồ Chí Minh,Private,Real estate & construction,left,368.0,,,FALSE
+CATHAYLIFE,Cathay Life,Công ty TNHH Bảo hiểm Nhân thọ Cathay Việt Nam,FDI,Insurance,left,353.0,,,FALSE
+BSP,Bia Sài Gòn - Phú Thọ,CTCP Bia Sài Gòn - Phú Thọ,Private,"Food, beverage & brewing",left,374.0,,,FALSE
+BSGVL,Savibeco,CTCP Bia Sài Gòn - Vĩnh Long,Private,"Food, beverage & brewing",left,568.0,,,FALSE
+VILAOCO,VILAOCO,Công ty Cổ phần Tổng công ty hợp tác kinh tế Việt Lào,Private,Real estate & construction,left,2257.0,,,FALSE
+HDBS,HD Securities,Công ty cổ phần Chứng khoán HD,Private,Securities,left,400.0,,,FALSE
+RAL,Rạng Đông,Công ty Cổ phần Bóng đèn Phích nước Rạng Đông,Private,Manufacturing & other industry,left,352.0,,,FALSE
+DNP,DNP Holding,CTCP DNP Holding,Private,Water & utilities,left,381.0,,,FALSE
+LIKSIN,Liksin,Tổng Công ty Công nghiệp In - Bao bì Liksin,SOE,Manufacturing & other industry,left,443.0,,,FALSE
+TLG,Thiên Long,Công ty Cổ phần Tập đoàn Thiên Long,Private,Manufacturing & other industry,left,345.0,,,FALSE
+SAIGONCONS,Saigoncons/SGCC,Tổng Công ty Xây dựng Sài Gòn - TNHH MTV,SOE,Real estate & construction,left,585.0,,,FALSE
+PGI,PG Insurance,Tổng CTCP Bảo hiểm Petrolimex,Private,Insurance,left,359.0,,,FALSE
+PEPSI,Suntory Pepsi,Công ty TNHH Nước giải khát Suntory PepsiCo Việt Nam,FDI,"Food, beverage & brewing",left,500.0,,,FALSE
+QLPR,The Metropole Thủ Thiêm,Công ty cổ phần Quốc Lộc Phát,Private,Real estate & construction,left,1000.0,,,FALSE
+RESCO,Resco,Tổng Công ty Địa ốc Sài Gòn - TNHH MTV,SOE,Real estate & construction,left,1183.0,,,FALSE
+PHUCLAM,PHUC LAM FUEL CORP,Công ty cổ phần Nhiên liệu Phúc Lâm,Private,"Oil, gas & fuels",left,1000.0,,,FALSE

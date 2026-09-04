@@ -1,0 +1,10 @@
+basis,n_firms_fy2024,n_firms_fy2025,total_fy2024_vnd_bn,total_fy2025_vnd_bn,soe_share_fy2024_pct,soe_share_fy2025_pct,change_pct_points
+Published basis,200,200,796822.0,989254.0,54.35,45.04,-9.31
+Balanced panel,169,169,778080.0,897416.0,55.32,49.38,-5.94
+"Balanced panel, ex-Vingroup",168,168,721917.0,748643.0,59.63,59.19,-0.44
+
+Sequential attribution of the published-basis change,,,,,,,pct_points
+List turnover,,,,,,,-3.37
+Vingroup,,,,,,,-5.5
+Like-for-like growth,,,,,,,-0.44
+TOTAL,,,,,,,-9.31

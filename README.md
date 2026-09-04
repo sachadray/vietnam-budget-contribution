@@ -15,6 +15,8 @@ Pages serves from `main`, folder `/ (root)`. The repository must be **public** f
 | `data/state100_fy2025.csv` / `.json` | All 100 firms in the STATE 100, with corporate group, parent/subsidiary role, and whether the row counts toward the headline contribution. |
 | `data/vntax200_fy2024.csv` | The prior year, for the year-on-year comparison. |
 | `data/panel_fy2024_fy2025.csv` | Matched firm-level panel across the two list years: 231 enterprises, each tagged `common` / `entered` / `left`, with an `in_balanced_panel` flag. |
+
+The page also carries the full VNTAX 200 for both list years as a searchable table (231 enterprises, English and Vietnamese names, dong and dollars), and the full STATE 100 for FY2025.
 | `data/ownership_share_decomposition.csv` | The state-share change on three bases, plus the sequential attribution that sums to the published −9.31 points. |
 | `data/VNTAX_FY2025_ownership_sector.xlsx` | Nine-sheet workbook with live formulas: firm-level tables, ownership and sector cuts, group structure, tax composition, year-on-year. |
 
@@ -92,6 +94,10 @@ The attribution is sequential, so the split between turnover and Vingroup depend
 **Disclosure coverage.** The publisher reports a total for every enterprise but a named-tax breakdown for only some. Across the list, ₫460,951bn of ₫989,254bn — 46.6% — carries a named tax; 40 enterprises worth 29.5% of the list disclose no split at all. Coverage is very uneven by ownership: 36% of state-owned remittance is attributed, 75% of domestic private, and 6% of foreign-invested. This bounds the incidence caveat rather than resolving it: VAT plus withheld PIT is ₫201,329bn, or 44% of the *disclosed* components, but that ratio cannot be extrapolated to the whole list, and the share of the ₫989,254bn that is collected rather than borne is not determinable from this source.
 
 **Land and land rent.** ₫111,837bn is separately disclosed as land and land rent, 11.3% of the list, across 21 enterprises. Vingroup is 83.9% of it. Stripping Vingroup's ₫93,813bn of land out of the denominator leaves ₫895,441bn, on which the state share is 49.8% rather than 45.0% — a sensitivity, not a restatement. The headline share on the published basis remains 45.0%.
+
+**Years.** Every figure is financial year 2025 unless labelled FY2024. FY2025 comes from the lists CafeF published in 2026; FY2024 from the VNTAX 200 published in 2025. The page states this in the hero and repeats the year in every section kicker, axis and column header.
+
+**Currency.** Dollar figures on the page convert at period-average rates of ₫24,900 per US$ for FY2024 and ₫26,050 for FY2025. **These are placeholders pending an official series** — they live in a single `fx` constant in the page payload and in nothing else, so replacing them updates every dollar figure at once. All shares, percentages and the decomposition are computed in dong and are unaffected by the rate.
 
 **What this is not.** Not a census — both lists are cut-offs. Not audited accounts — publisher figures, reconciled to the publisher's own totals but not to Ministry of Finance returns. Not group accounts in the VNTAX 200 — each row there is the figure the publisher ranks on, so PetroVietnam's ₫90,991bn is the ranked entity, not the consolidated group.
 

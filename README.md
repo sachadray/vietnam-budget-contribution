@@ -26,6 +26,10 @@ The page also carries the full VNTAX 200 for both list years as a searchable tab
 
 This is easy to get wrong and it matters: the 2024 and 2025 pictures are materially different. The convention was confirmed by cross-checking PetroVietnam, which is ₫90,991bn in both the 2026 VNTAX 200 and the STATE 100.
 
+## How the page is ordered
+
+Findings first, method last. The page runs: the list as a whole → concentration → sectors → **the state sector** → STATE 100 and corporate groups → land revenue → **what the contribution is made of** → the full tables → the balanced-panel sensitivity → method notes. The sensitivity that strips Vingroup and holds constituents fixed is methodological, so it sits at the end rather than interrupting the findings.
+
 ## Headline findings, 2025
 
 Of the **₫989.3tn** remitted by the 200 largest contributors, state-owned enterprises paid **₫445.6tn — 45.0%** from 74 of the 200 firms. Domestic private firms paid ₫390.3tn (39.5%) and foreign-invested firms ₫153.4tn (15.5%).
@@ -100,6 +104,16 @@ The attribution is sequential, so the split between turnover and Vingroup depend
 Every year shown is the **payment year**, never the publisher's list label. Every figure is 2025 unless labelled 2024. The page states this in the hero and repeats the year in every section kicker, axis and column header; the publication-year convention is explained once, in the method notes, and is deliberately kept away from the rankings so a rank is never read as belonging to a list-label year.
 
 **Currency.** Dollar figures on the page convert at period-average rates of ₫24,900 per US$ for 2024 and ₫26,050 for 2025. **These are placeholders pending an official series** — they live in a single `fx` constant in the page payload and in nothing else, so replacing them updates every dollar figure at once. All shares, percentages and the decomposition are computed in dong and are unaffected by the rate.
+
+**What the contribution is made of, and the dividend question.** The publisher ranks on one figure, *nộp ngân sách*, and breaks it into five named lines — VAT domestic, VAT on imports, corporate income tax, personal income tax withheld, and land and land rent. All five are taxes plus land. They account for **44.2%** of the total; **55.8% carries no label at all**.
+
+None of the five is a dividend or a remittance of residual after-tax profit. Vietnam's budget takes both from state enterprises, alongside excise, natural-resource and petroleum levies, environmental protection tax and customs duties — none of which is separately identified here. **Whether any of them sits inside the number is not determinable from this source.** It matters in both directions: if dividends and profit remittance are included, state enterprises are being compared with private ones on a wider basis than tax; if they are excluded, the state sector's full fiscal contribution is larger than the 45.0% shown. Settling it requires the Ministry of Finance revenue classification, not this list. The page states this rather than resolving it.
+
+Disclosure is very uneven by ownership: 36% of state remittance carries a named line, against 69% of domestic private and 6% of foreign-invested. Land is 27.7% of private remittance but 1.0% of state remittance — the land story on this list is a private-sector story.
+
+**Two rows excluded from the composition arithmetic.** Mobile World Group (rank 88) and Vinaconex (rank 188) report component lines summing to more than the figure they are ranked on — ₫23,524bn against ₫2,056bn, and ₫1,410bn against ₫428bn. In the VNTAX 200 the publisher nests subsidiaries inside a parent's entry, so the ranked total and the components are not measuring the same entity. Both are excluded from the composition section, which therefore covers 198 of the 200; they remain in every other figure, where only the ranked total is used. Including them overstates named coverage by 2.4 points (46.6% against 44.2%).
+
+**The state sector.** The 74 state-owned enterprises remit ₫445,558bn, about one dong in six of all budget revenue. Within that, concentration is high: PetroVietnam alone is 20.4% of state remittance, the top five 47%, the top ten 64% and the top twenty 78%, leaving 22% across the remaining 54. Oil, gas and fuels is 32.7% of state remittance; lotteries and tobacco are 100% state; coal and mining 97%.
 
 **What this is not.** Not a census — both lists are cut-offs. Not audited accounts — publisher figures, reconciled to the publisher's own totals but not to Ministry of Finance returns. Not group accounts in the VNTAX 200 — each row there is the figure the publisher ranks on, so PetroVietnam's ₫90,991bn is the ranked entity, not the consolidated group.
 
